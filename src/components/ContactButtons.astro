@@ -1,0 +1,21 @@
+---
+import LinkButton from "./LinkButton.astro";
+import Github from "./icons/Github.astro";
+import Linkedin from "./icons/Linkedin.astro";
+import Mail from "./icons/Mail.astro";
+---
+
+<nav class=`flex gap-4 ${Astro.props.class}`>
+  <LinkButton
+    class="contact_links"
+    href="https://www.linkedin.com/in/igmolinap/"
+  >
+    <Linkedin class="size-4" /> LinkedIn
+  </LinkButton>
+  <LinkButton class="contact_links" href="https://github.com/Strocs">
+    <Github class="size-5" /> GitHub
+  </LinkButton>
+  <LinkButton class="contact_links" href="mailto:strocsdev@gmail.com">
+    <Mail class="size-6" /> strocsdev@gmail.com
+  </LinkButton>
+</nav>
