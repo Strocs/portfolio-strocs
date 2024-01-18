@@ -1,0 +1,31 @@
+---
+import ContactButtons from "./ContactButtons.astro";
+import ProfileImage from "./ProfileImage.astro";
+---
+
+<section
+  id="Contacto"
+  class="space-y-8 grid grid-flow-row items-center h-screen -mt-20 content-center"
+>
+  <h1 class="text-5xl leading-8">
+    Hola! ✌️ Soy <strong>Ignacio Molina</strong>
+    <span class="font-light text-2xl text-zinc-500">/ aka Strocs</span>
+  </h1>
+  <article>
+    <h2 class="text-2xl">Desarrollador Web</h2>
+    <div class="flex justify-between gap-10 items-center -mt-16">
+      <p
+        class="pt-2 border-l-2 border-dashed border-zinc-400 h-fit pl-4 text-pretty font-sans tracking-wide text-xl pb-4"
+      >
+        +2 años de experiencia en proyectos freelance. <span
+          class="text-yellow-200"
+          >Apasionado por el diseño y el desarrollo.</span
+        >
+        Me integro en la visión de diseño de tu proyecto para desarrollar webs únicas.
+        <span class="text-yellow-200">Actualmente en Santiago, Chile 🆑</span>
+      </p>
+      <ProfileImage />
+    </div>
+    <ContactButtons class="-mt-12" />
+  </article>
+</section>

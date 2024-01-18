@@ -1,50 +1,16 @@
 ---
-import Badge from "../components/Badge.astro";
-import ProfileImage from "../components/ProfileImage.astro";
 import Layout from "../layouts/Layout.astro";
-import Linkedin from "../components/icons/Linkedin.astro";
-import Github from "../components/icons/Github.astro";
-import Mail from "../components/icons/Mail.astro";
+import ContactSection from "../components/ContactSection.astro";
+import ExperienceSection from "../components/ExperienceSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import AboutSection from "../components/AboutSection.astro";
 ---
 
-<Layout title="<Ignacio Molina ✌️ /> Portfolio">
+<Layout title="<Ignacio Molina ✌️ /> Portfolio" description="">
   <main class="px-4 max-w-4xl w-full mx-auto">
-    <section
-      class="space-y-8 grid grid-flow-row items-center h-screen -mt-20 content-center"
-    >
-      <h1 class="text-5xl leading-8">
-        Hola! ✌️ Soy <strong>Ignacio Molina</strong>
-        <span class="font-light text-2xl text-zinc-500">/ aka Strocs</span>
-      </h1>
-      <section>
-        <h2 class="text-2xl">Desarrollador Web</h2>
-        <div class="flex justify-between gap-10 items-center -mt-16">
-          <h2
-            class="pt-2 border-l-2 border-dashed border-zinc-400 h-fit pl-4 text-pretty font-sans tracking-wide text-xl pb-4"
-          >
-            +2 años de experiencia en proyectos freelance. <span
-              class="text-slate-400"
-              >Apasionado por el diseño y el desarrollo.</span
-            >
-            Me integro en la visión de diseño de tu proyecto para desarrollar webs
-            únicas.
-            <span class="text-slate-400">Actualmente en Santiago, Chile 🆑</span
-            >
-          </h2>
-          <ProfileImage />
-        </div>
-        <nav class="flex gap-4 -mt-12">
-          <Badge href="https://www.linkedin.com/in/igmolinap/">
-            <Linkedin class="size-4" /> LinkedIn
-          </Badge>
-          <Badge href="https://github.com/Strocs">
-            <Github class="size-4" /> GitHub
-          </Badge>
-          <Badge href="mailto:strocsdev@gmail.com">
-            <Mail class="size-4" /> strocsdev@gmail.com
-          </Badge>
-        </nav>
-      </section>
-    </section>
+    <ContactSection />
+    <ExperienceSection />
+    <ProjectsSection />
+    <AboutSection />
   </main>
 </Layout>
