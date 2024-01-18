@@ -1,0 +1,81 @@
+<div class="img_border_wrapper absolute">
+  <div
+    class="img_border w-72 h-72 bg-transparent rounded-full outline outline-2 border-zinc-200/80"
+  >
+  </div>
+</div>
+
+<script>
+  import gsap from "gsap";
+  import MotionPathPlugin from "gsap/MotionPathPlugin";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: ".img_border_wrapper",
+        toggleActions: "restart pause reverse reset",
+        start: "center 200px",
+        end: "+=255%",
+        scrub: true,
+        pin: true,
+        onended: (e) => {
+          console.log("ended", e);
+        },
+      },
+    })
+    .fromTo(
+      ".img_border_wrapper",
+      { x: 0, y: 0 },
+      {
+        ease: "power2.inOut",
+        motionPath: [
+          { x: 50, y: 100 },
+          { x: 100, y: 150 },
+          { x: 20, y: 400 },
+        ],
+      }
+    );
+
+  gsap
+    .timeline({
+      repeat: -1,
+      yoyo: true,
+    })
+    .fromTo(
+      ".img_border",
+      { x: 0, y: 0 },
+      {
+        ease: "power1.inOut",
+        duration: 8,
+        motionPath: [
+          { x: 10, y: 10 },
+          { x: -10, y: 10 },
+          { x: 10, y: -10 },
+          { x: -10, y: -10 },
+        ],
+      }
+    );
+
+  gsap
+    .timeline({
+      repeat: -1,
+      yoyo: true,
+    })
+    .fromTo(
+      ".img_border",
+      { x: 0, y: 0 },
+      {
+        ease: "power1.inOut",
+        duration: 8,
+        motionPath: [
+          { x: 10, y: 10 },
+          { x: -10, y: 10 },
+          { x: 10, y: -10 },
+          { x: -10, y: -10 },
+        ],
+      }
+    );
+</script>

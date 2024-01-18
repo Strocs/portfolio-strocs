@@ -1,40 +1,12 @@
+---
+import ImageCircle from "./ImageCircle.astro";
+---
+
 <div class="relative w-fit h-fit shrink-0">
-  <div class="img_border_wrapper">
-    <div
-      class="img_border w-72 h-72 bg-transparent absolute rounded-full border-2 border-dashed border-zinc-200/80"
-    >
-    </div>
-  </div>
+  <ImageCircle />
   <img
     src="https://avatars.githubusercontent.com/u/71996940?v=4"
     alt="Imágen de Ignacio Molina"
     class="rounded-full w-72 aspect-square"
   />
 </div>
-
-<style>
-  .img_border_wrapper {
-    animation: move_border_Y 8s ease-in-out infinite alternate;
-  }
-  .img_border {
-    animation: move_border_X 4s ease-in-out infinite alternate;
-  }
-
-  @keyframes move_border_Y {
-    33% {
-      transform: translateY(0.5rem);
-    }
-    66% {
-      transform: translateY(-0.5rem);
-    }
-  }
-
-  @keyframes move_border_X {
-    33% {
-      transform: translateX(0.5rem);
-    }
-    66% {
-      transform: translateX(-0.5rem);
-    }
-  }
-</style>
