@@ -1,0 +1,16 @@
+---
+import Heading2 from "./Heading2.astro";
+
+interface Props {
+  id?: string;
+  class?: string;
+  title: string;
+}
+
+const { id, class: customClass, title, ...props } = Astro.props;
+---
+
+<section id={id} class:list={["pt-5 pb-40 space-y-4", customClass]} {...props}>
+  <Heading2>{title}</Heading2>
+  <slot />
+</section>
