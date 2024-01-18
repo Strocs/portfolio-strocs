@@ -1,0 +1,13 @@
+---
+import NavLink from "./NavLink.astro";
+
+const NAV = ["Contacto", "Experiencia", "Proyectos", "Sobre mí"];
+---
+
+<nav class="font-sans flex justify-center gap-2">
+  {
+    NAV.map((navItem) => (
+      <NavLink href={`#${navItem.replaceAll(" ", "-")}`}>{navItem}</NavLink>
+    ))
+  }
+</nav>
