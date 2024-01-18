@@ -1,0 +1,27 @@
+<div class="w-screen h-full overflow-hidden absolute -z-10">
+  <div
+    class="cursor size-[120rem] bg-zinc-950/10 rounded-full pointer-events-none"
+  >
+  </div>
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  const contactNavLinks = gsap.utils.toArray(".contact_links");
+  const scaleCursor = gsap.to(".cursor", { scale: 0.1, duration: 0.4 }).pause();
+
+  contactNavLinks.forEach((link: any) => {
+    link.addEventListener("mouseenter", () => {
+      scaleCursor.play();
+    });
+    link.addEventListener("mouseleave", () => {
+      scaleCursor.reverse();
+    });
+  });
+
+  gsap.set(".cursor", { xPercent: -50, yPercent: -50 });
+  window.addEventListener("mousemove", (e) => {
+    gsap.to(".cursor", { x: e.clientX, y: e.clientY, duration: 0.5 });
+  });
+</script>
