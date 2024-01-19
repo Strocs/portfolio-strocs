@@ -5,14 +5,14 @@ import ProfileImage from "./ProfileImage.astro";
 
 <section
   id="Contacto"
-  class="space-y-8 grid grid-flow-row items-center h-screen mb-10 sm:mb-0 sm:-mt-20 content-center"
+  class="space-y-8 grid grid-flow-row items-center h-full py-20 sm:py-40 mb-10 sm:mb-0 content-center"
 >
-  <h1 class="text-4xl sm:text-5xl">
-    Hola! ✌️ Soy <strong>Ignacio Molina</strong>
-    <span class="font-light text-xl sm:text-2xl text-zinc-500"
-      >- aka Strocs</span
-    >
-  </h1>
+  <div>
+    <h1 class="text-4xl sm:text-5xl">
+      Hola! ✌️ Soy <strong>Ignacio Molina</strong>
+    </h1>
+    <p class="font-light text-xl sm:text-2xl text-zinc-500">- aka Strocs</p>
+  </div>
   <article class="grid gap-4 sm:gap-14 lg:gap-0">
     <h2 class="text-2xl">Desarrollador Web</h2>
     <div
@@ -28,7 +28,7 @@ import ProfileImage from "./ProfileImage.astro";
         Me integro en la visión de diseño de tu proyecto para desarrollar webs únicas.
         <span class="text-yellow-200">Actualmente en Santiago, Chile 🆑</span>
       </p>
-      <div class="hidden sm:block relative size-fit shrink-0">
+      <div class="hidden sm:block shrink-0">
         <ProfileImage />
       </div>
     </div>
