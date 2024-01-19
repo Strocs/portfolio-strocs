@@ -7,42 +7,10 @@
 
 <script>
   import gsap from "gsap";
+
   import MotionPathPlugin from "gsap/MotionPathPlugin";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
-
-  let mm = gsap.matchMedia();
-
-  mm.add("(min-width: 640px)", () => {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".img_border_wrapper",
-          start: "center 200px",
-          end: "+=255%",
-          scrub: true,
-          pin: true,
-          onended: (e) => {
-            console.log("ended", e);
-          },
-        },
-      })
-      .fromTo(
-        ".img_border_wrapper",
-        { x: 0, y: 0 },
-        {
-          ease: "none",
-          motionPath: [
-            { x: 180, y: 150 },
-            { x: 250, y: 200 },
-            { x: 250, y: 275 },
-            { x: 220, y: 350 },
-            { x: 0, y: 400 },
-          ],
-        }
-      );
-  });
+  gsap.registerPlugin(MotionPathPlugin);
 
   gsap
     .timeline({
