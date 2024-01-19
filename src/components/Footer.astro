@@ -1,10 +1,14 @@
 ---
 import ContactButtons from "./ContactButtons.astro";
 import Nav from "./Nav.astro";
+import ProfileImage from "./ProfileImage.astro";
 ---
 
 <footer class="pt-20 pb-4 space-y-8">
-  <ContactButtons class="justify-center" />
+  <div class="mx-auto w-fit block sm:hidden">
+    <ProfileImage />
+  </div>
+  <ContactButtons class="mx-none sm:mx-auto justify-center" />
   <Nav />
   <p class="text-center text-xs">Ignacio A. Molina - Strocs / 2024</p>
 </footer>

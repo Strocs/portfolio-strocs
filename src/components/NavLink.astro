@@ -1,5 +1,17 @@
+---
+interface Props {
+  class?: string;
+  href: string;
+}
+
+const { class: customClass, href, ...props } = Astro.props;
+---
+
 <a
-  href={Astro.props.href}
-  class="hover:bg-zinc-900/40 rounded-md py-1 px-2 transition hover:outline outline-1 outline-zinc-200/10"
-  {...Astro.props}><slot /></a
+  href={href}
+  class:list={[
+    "hover:bg-zinc-900/40 rounded-md py-1 px-1 sm:px-2 text-sm sm:text-base transition hover:outline outline-1 outline-zinc-200/10",
+    customClass,
+  ]}
+  {...props}><slot /></a
 >
