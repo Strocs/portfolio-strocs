@@ -1,6 +1,6 @@
 <div class="w-screen h-full overflow-hidden absolute -z-10">
   <div
-    class="cursor size-[120rem] bg-zinc-950/10 rounded-full pointer-events-none"
+    class="cursor size-[30rem] sm:size-[120rem] bg-zinc-950/10 rounded-full pointer-events-none"
   >
   </div>
 </div>
@@ -8,7 +8,11 @@
 <script>
   import gsap from "gsap";
 
-  const contactNavLinks = gsap.utils.toArray(".contact_links");
+  const contactNavLinks = [
+    ...gsap.utils.toArray(".contact_links"),
+    ...gsap.utils.toArray(".nav_links"),
+  ];
+
   const scaleCursor = gsap.to(".cursor", { scale: 0.1, duration: 0.4 }).pause();
 
   contactNavLinks.forEach((link: any) => {
