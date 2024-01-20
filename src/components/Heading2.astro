@@ -5,4 +5,4 @@ interface Props {
 const { class: customClass } = Astro.props;
 ---
 
-<h2 class:list={["text-4xl", customClass]}><slot /></h2>
+<h2 class:list={["text-4xl sm:text-5xl", customClass]}><slot /></h2>

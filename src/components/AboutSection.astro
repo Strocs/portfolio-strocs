@@ -1,38 +1,46 @@
 ---
 import FavTechs from "./FavTechs.astro";
 import Paragraph from "./Paragraph.astro";
+import ProfileImage from "./ProfileImage.astro";
 import Section from "./Section.astro";
 ---
 
 <Section id="Sobre-mí" title="Sobre mí">
-  <div class="border-l-2 border-dashed border-zinc-400 py-4 space-y-4">
-    <Paragraph class="ms-4">
-      Hace dos años nació mi interés por la programación y el desarrollo de
-      software. En ese momento, mientras cursaba la fase de titulación en
-      Arquitectura, <strong class="text-yellow-200"
-        >me di cuenta que mi verdadera pasión era ser desarrollador.</strong
-      >
-    </Paragraph>
-    <Paragraph class="ms-4">
-      Comencé mi aprendizaje de forma autodidacta, estudiando <strong
-        class="text-yellow-200"
-        >HTML y CSS con profesores como Midudev y aprovechando los Platzi Day.</strong
-      > Luego, adquirí cursos de <strong class="text-yellow-200"
-        >JavaScript Moderno, React, Next.js y Node.js del profesor Fernando
-        Herrera.</strong
-      > Paralelamente, investigaba temas como <strong class="text-yellow-200"
-        >estrategias de renderizado, bases de datos, arquitectura de software,
-        buenas prácticas y más.</strong
-      >
-    </Paragraph>
-    <Paragraph class="ms-4">
-      Actualmente, trabajo como desarrollador freelance utilizando Astro y
-      <strong class="text-yellow-200"
-        >centrándome en el rendimiento de mis proyectos.</strong
-      > Como objetivo a futuro, espero <strong class="text-yellow-200"
-        >seguir mejorando y aprendiendo cada día más.</strong
-      >
-    </Paragraph>
+  <div
+    class="border-l-2 border-dashed border-zinc-400 py-4 flex gap-6 justify-between"
+  >
+    <div class="space-y-4">
+      <Paragraph class="ms-4">
+        Hace dos años nació mi interés por la programación y el desarrollo de
+        software. En ese momento, mientras cursaba la fase de titulación en
+        Arquitectura, <strong class="text-yellow-200"
+          >me di cuenta que mi verdadera pasión era ser desarrollador.</strong
+        >
+      </Paragraph>
+      <Paragraph class="ms-4">
+        Comencé mi aprendizaje de forma autodidacta, estudiando <strong
+          class="text-yellow-200"
+          >HTML y CSS con profesores como Midudev y aprovechando los Platzi Day.</strong
+        > Luego, adquirí cursos de <strong class="text-yellow-200"
+          >JavaScript Moderno, React, Next.js y Node.js del profesor Fernando
+          Herrera.</strong
+        > Paralelamente, investigaba temas como <strong class="text-yellow-200"
+          >estrategias de renderizado, bases de datos, arquitectura de software,
+          buenas prácticas y más.</strong
+        >
+      </Paragraph>
+      <Paragraph class="ms-4">
+        Actualmente, trabajo como desarrollador freelance utilizando Astro y
+        <strong class="text-yellow-200"
+          >centrándome en el rendimiento de mis proyectos.</strong
+        > Como objetivo a futuro, espero <strong class="text-yellow-200"
+          >seguir mejorando y aprendiendo cada día más.</strong
+        >
+      </Paragraph>
+    </div>
+    <div class="hidden sm:block shrink-0 self-center">
+      <ProfileImage />
+    </div>
   </div>
   <h3 class="text-2xl">Tecnologías favoritas</h3>
   <div class="flex gap-6 flex-wrap">

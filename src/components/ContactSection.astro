@@ -13,13 +13,11 @@ import ProfileImage from "./ProfileImage.astro";
     </h1>
     <p class="font-light text-xl sm:text-2xl text-zinc-500">- aka Strocs</p>
   </div>
-  <article class="grid gap-4 sm:gap-14 lg:gap-0">
+  <article class="grid gap-6">
     <h2 class="text-2xl">Desarrollador Web</h2>
-    <div
-      class="flex flex-col sm:flex-row justify-between gap-10 items-center sm:-mt-16"
-    >
+    <div class="flex flex-col sm:flex-row justify-between gap-10 items-center">
       <p
-        class="pt-2 border-l-2 border-dashed border-zinc-400 h-fit pl-4 text-pretty font-sans tracking-wide text-xl pb-4"
+        class="pt-2 border-l-2 border-dashed border-zinc-400 h-fit pl-4 text-pretty font-sans tracking-wide text-xl pb-4 max-w-[60ch]"
       >
         +2 años de experiencia en proyectos freelance. <span
           class="text-yellow-200"
@@ -28,10 +26,7 @@ import ProfileImage from "./ProfileImage.astro";
         Me integro en la visión de diseño de tu proyecto para desarrollar webs únicas.
         <span class="text-yellow-200">Actualmente en Santiago, Chile 🆑</span>
       </p>
-      <div class="hidden sm:block shrink-0">
-        <ProfileImage />
-      </div>
     </div>
-    <ContactButtons class="sm:-mt-12" />
+    <ContactButtons class="" />
   </article>
 </section>
