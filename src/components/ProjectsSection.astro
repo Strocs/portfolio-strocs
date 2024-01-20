@@ -1,11 +1,149 @@
 ---
 import Section from "./Section.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
+import Github from "./icons/Github.astro";
+import React from "./icons/React.astro";
+import Site from "./icons/Site.astro";
+import TailwindCSS from "./icons/TailwindCSS.astro";
+import Vercel from "./icons/Vercel.astro";
+import Firebase from "./icons/Firebase.astro";
+import ReactRouter from "./icons/ReactRouter.astro";
+import LinkButton from "./LinkButton.astro";
+import Paragraph from "./Paragraph.astro";
+
+const TAGS = {
+  ASTRO: {
+    name: "AstroJs",
+    colors: "bg-red-900/60",
+    icon: AstroIcon,
+  },
+  TAILWIND: {
+    name: "TailwindCSS",
+    colors: "bg-cyan-900/60",
+    icon: TailwindCSS,
+  },
+  REACT: {
+    name: "ReactJs",
+    colors: "bg-blue-900/60",
+    icon: React,
+  },
+  FIREBASE: {
+    name: "Firebase",
+    colors: "bg-yellow-900/60",
+    icon: Firebase,
+  },
+  ZUSTAND: {
+    name: "Zustand",
+    colors: "bg-orange-900/80",
+    icon: "https://github.com/pmndrs/zustand/blob/main/examples/demo/public/logo192.png?raw=true",
+  },
+  REACT_ROUTER: {
+    name: "React Router",
+    colors: "bg-red-900/80",
+    icon: ReactRouter,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Memoria Audiovisual",
+    subTitle:
+      "Repositorio audiovisual de proyectos de título de Arquitectura de la Universidad de La Serena, Chile.",
+    description:
+      "El proyecto fue pensado para verse en dispositivos móbiles, pero adaptado también a escritorio, se propone la idea de generar una web app tomando como referencia las aplicaciónes para ver videos cortos, teniendo un teaser el material e invitando a acceder al contenido extendido.",
+    image: "/memoria.jpg",
+    links: {
+      repo: "https://github.com/Strocs/Memorias_audiovisuales",
+      site: "https://memorias-audiovisuales.vercel.app",
+    },
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+  },
+  {
+    title: "ARC 2023",
+    subTitle:
+      "Festival de las Artes Escenicas de la Región de Coquimbo, Chile.",
+    description:
+      "El cliente solicita un sitio web con un mapa interactivo de los sectores del evento, donde le usuario pueda acceder a cada lugar y tener más información del los eventos. Además se integran los colores seleccionados por el cliente para asociar cada color a un lugar del evento.",
+    image: "/arc.jpg",
+    links: {
+      repo: "https://github.com/Strocs/ARC2023",
+      site: "https://festivalarc.cl",
+    },
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+  },
+  {
+    title: "_LoungeFi",
+    subTitle:
+      "Comienza un Pomodoro Timer, escucha música LoFi mientras trabajas en tus tareas diarias.",
+    description:
+      "_LoungeFi es una aplicación web para enfocarse en las tareas diarias, nace de la idea de crear una aplicación sencilla siguiendo la filosofía de 'Si tienes una idea, programala y listo'.",
+    image: "/loungefi.jpg",
+    links: {
+      repo: "https://github.com/Strocs/_LoungeFi",
+      site: "https://loungefi.vercel.app",
+    },
+    tags: [
+      TAGS.REACT,
+      TAGS.TAILWIND,
+      TAGS.ZUSTAND,
+      TAGS.REACT_ROUTER,
+      TAGS.FIREBASE,
+    ],
+  },
+];
 ---
 
-<Section id="Proyectos" title="Proyectos" class="space-y-12">
-  <div class="projects w-full h-[500px] bg-slate-700 rounded-2xl"></div>
+<Section id="Proyectos" title="Proyectos" class="">
+  {
+    PROJECTS.map(({ title, subTitle, description, image, links, tags }) => (
+      <article class="space-y-4 py-10 tracking-wide">
+        <h3 class="text-4xl font-bold leading-none text-zinc-200">{title}</h3>
+        <p class="text-md text-zinc-300">{subTitle}</p>
+        <section class="space-y-4 border-l-2 border-dashed border-zinc-400 py-4 pl-4">
+          <Paragraph>{description}</Paragraph>
+          <ul class="flex gap-2 sm:gap-4 flex-wrap">
+            {tags.map((tag) => (
+              <li
+                class:list={[
+                  "flex gap-x-2 rounded-md text-xs py-1 px-2 sm:py-2 sm:px-3",
+                  tag.colors,
+                ]}
+              >
+                {typeof tag.icon === "string" ? (
+                  <img
+                    class="size-4"
+                    src={tag.icon}
+                    alt={`Logo de Zustand ${tag.name}`}
+                  />
+                ) : (
+                  <tag.icon class="size-4" />
+                )}
+                {tag.name}
+              </li>
+            ))}
+          </ul>
+          <img
+            loading="lazy"
+            class="rounded-md shadow-2xl shadow-white/10 aspect-video"
+            src={image}
+            alt={`Captura de pantalla del proyecto ${title}`}
+          />
+        </section>
+        <footer class="flex gap-4 flex-wrap">
+          <LinkButton href={links.repo}>
+            <Github class="size-5" />
+            Ver Código
+          </LinkButton>
+          <LinkButton href={links.site}>
+            <Site class="size-6" />
+            Ir al Sitio Web
+          </LinkButton>
+        </footer>
+      </article>
+    ))
+  }
+  <!-- <div class="projects w-full h-[500px] bg-slate-700 rounded-2xl"></div>
   <div class="projects w-full h-[500px] bg-slate-700 rounded-2xl relative">
   </div>
-  <div class="projects w-full h-[500px] bg-slate-700 rounded-2xl relative">
-  </div>
+  <div class="projects w-full h-[500px] bg-slate-700 rounded-2xl relative"> -->
 </Section>

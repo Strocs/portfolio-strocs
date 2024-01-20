@@ -9,7 +9,7 @@ const { class: customClass, href, ...props } = Astro.props;
 <a
   href={href}
   class:list={[
-    "bg-zinc-800/60 border border-zinc-200/10 rounded-lg flex justify-center items-center gap-x-2 py-2 px-4 text-base text-zinc-200 transition relative overflow-hidden after:content-[''] after:w-0 after:hover:w-full after:transition-[width] after:duration-200 after:absolute after:left-0 after:-z-10 after:h-full after:bg-zinc-600 after:blur-xl after:scale-125",
+    "bg-zinc-800/60 w-fit border border-zinc-200/10 rounded-lg flex justify-center items-center gap-x-2 py-2 px-4 text-base text-zinc-200 transition relative overflow-hidden after:content-[''] after:w-0 after:hover:w-full after:transition-[width] after:duration-200 after:absolute after:left-0 after:-z-10 after:h-full after:bg-zinc-600 after:blur-xl after:scale-125",
     customClass,
   ]}
   {...props}
