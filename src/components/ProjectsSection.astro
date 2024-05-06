@@ -1,48 +1,10 @@
 ---
 import Section from "./Section.astro";
-import AstroIcon from "./icons/AstroIcon.astro";
 import Github from "./icons/Github.astro";
-import React from "./icons/React.astro";
 import Site from "./icons/Site.astro";
-import TailwindCSS from "./icons/TailwindCSS.astro";
-import Vercel from "./icons/Vercel.astro";
-import Firebase from "./icons/Firebase.astro";
-import ReactRouter from "./icons/ReactRouter.astro";
 import LinkButton from "./LinkButton.astro";
 import Paragraph from "./Paragraph.astro";
-
-const TAGS = {
-  ASTRO: {
-    name: "AstroJs",
-    colors: "bg-red-900/60",
-    icon: AstroIcon,
-  },
-  TAILWIND: {
-    name: "TailwindCSS",
-    colors: "bg-cyan-900/60",
-    icon: TailwindCSS,
-  },
-  REACT: {
-    name: "ReactJs",
-    colors: "bg-blue-900/60",
-    icon: React,
-  },
-  FIREBASE: {
-    name: "Firebase",
-    colors: "bg-yellow-900/60",
-    icon: Firebase,
-  },
-  ZUSTAND: {
-    name: "Zustand",
-    colors: "bg-orange-900/80",
-    icon: "https://github.com/pmndrs/zustand/blob/main/examples/demo/public/logo192.png?raw=true",
-  },
-  REACT_ROUTER: {
-    name: "React Router",
-    colors: "bg-red-900/80",
-    icon: ReactRouter,
-  },
-};
+import BadgesList from "./BadgesList.astro";
 
 const PROJECTS = [
   {
@@ -56,7 +18,7 @@ const PROJECTS = [
       repo: "https://github.com/Strocs/Memorias_audiovisuales",
       site: "https://memorias-audiovisuales.vercel.app",
     },
-    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    tags: ["astro", "TAILWIND"],
   },
   {
     title: "ARC 2023",
@@ -69,7 +31,7 @@ const PROJECTS = [
       repo: "https://github.com/Strocs/ARC2023",
       site: "https://festivalarc.cl",
     },
-    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    tags: ["ASTRO", "TAILWIND"],
   },
   {
     title: "_LoungeFi",
@@ -82,13 +44,7 @@ const PROJECTS = [
       repo: "https://github.com/Strocs/_LoungeFi",
       site: "https://loungefi.vercel.app",
     },
-    tags: [
-      TAGS.REACT,
-      TAGS.TAILWIND,
-      TAGS.ZUSTAND,
-      TAGS.REACT_ROUTER,
-      TAGS.FIREBASE,
-    ],
+    tags: ["REACT", "TAILWIND", "ZUSTAND", "REACT_ROUTER", "FIREBASE"],
   },
 ];
 ---
@@ -101,27 +57,7 @@ const PROJECTS = [
         <p class="text-md text-zinc-300">{subTitle}</p>
         <section class="space-y-4 border-l-2 border-dashed border-zinc-400 py-4 pl-4">
           <Paragraph>{description}</Paragraph>
-          <ul class="flex gap-2 sm:gap-4 flex-wrap">
-            {tags.map((tag) => (
-              <li
-                class:list={[
-                  "flex gap-x-2 rounded-md text-xs py-1 px-2 sm:py-2 sm:px-3",
-                  tag.colors,
-                ]}
-              >
-                {typeof tag.icon === "string" ? (
-                  <img
-                    class="size-4"
-                    src={tag.icon}
-                    alt={`Logo de Zustand ${tag.name}`}
-                  />
-                ) : (
-                  <tag.icon class="size-4" />
-                )}
-                {tag.name}
-              </li>
-            ))}
-          </ul>
+          <BadgesList tagList={tags} />
           <img
             loading="lazy"
             class="rounded-md shadow-2xl shadow-white/10 aspect-video"

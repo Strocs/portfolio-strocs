@@ -1,0 +1,77 @@
+---
+import BadgesList from "./BadgesList.astro";
+import LinkButton from "./LinkButton.astro";
+import Paragraph from "./Paragraph.astro";
+import Section from "./Section.astro";
+import Github from "./icons/Github.astro";
+import Site from "./icons/Site.astro";
+
+const MORE_PROJECTS = {
+  title: "Más Proyectos",
+  id: "more-projects",
+  list: [
+    {
+      title: "MUPA: Mujeres, patrimonio y arquitectura local",
+      subTitle:
+        "Visibilizando el legado femenino en la producción arquitectónica de las ciudades de La Serena y Coquimbo.",
+      description:
+        "Proyecto realizado el año 2023 para el grupo Arquitómicas de La Serena, contempla secciones para arquitectas destacadas de la Región de Coquimbo, cada sección se pensó para destacar el material audiovisual, que acompaña durante toda la navegación.",
+      links: {
+        repo: "https://github.com/Strocs/mupa",
+        site: "https://somosmupa.cl",
+      },
+      tags: ["astro", "tailwind"],
+    },
+    {
+      title: "Relatos de Barrios",
+      subTitle:
+        "Relatos de Barrios busca difundir el valor patrimonial e histórico de éste y otros barrios de La Serena ligados al patrimonio industrial, destacando la experiencia social y patrimonial detrás de la vida de sus habitantes.",
+      description:
+        "Proyecto realizado el año 2022, se basa en una landing page que contiene diferentes secciones que muestran el material recopilado a modo de galería, se propone un diseño que destaca por la unidad visual de su contenido. Primer proyecto realizado con React.",
+      links: {
+        repo: "https://github.com/Strocs/RelatosDeBarrios",
+      },
+      tags: ["react"],
+    },
+    {
+      title: "Festival Frijol Magico",
+      subTitle:
+        "Frijol Mágico es un espacio que reúne a las y los Ilustradores de la Región de Coquimbo, generando distintas instancias que ayuden a potenciar su trabajo.",
+      description:
+        "La web de Frijol Mágico fue la primera que realicé con Javascipt, CSS y HTML el año 2021, existe una rama en el repositorio que aún conserva el código legacy de la antigua versión. Actualmente está construída en Astro.",
+      links: {
+        repo: "https://github.com/Strocs/FrijolMagico",
+        site: "https://www.elfrijolmagico.cl/",
+      },
+      tags: ["javascript", "css", "html", "astro"],
+    },
+  ],
+};
+---
+
+<Section id={MORE_PROJECTS.id} title={MORE_PROJECTS.title}>
+  {
+    MORE_PROJECTS.list.map(({ title, subTitle, description, links, tags }) => (
+      <article class="space-y-4 py-10 tracking-wide">
+        <h3 class="text-4xl font-bold leading-none text-zinc-200">{title}</h3>
+        <p class="text-md text-zinc-300">{subTitle}</p>
+        <section class="space-y-4 border-l-2 border-dashed border-zinc-400 py-4 pl-4">
+          <Paragraph>{description}</Paragraph>
+          <BadgesList tagList={tags} />
+        </section>
+        <footer class="flex gap-4 flex-wrap">
+          <LinkButton href={links.repo}>
+            <Github class="size-5" />
+            Ver Código
+          </LinkButton>
+          {!!links.site && (
+            <LinkButton href={links.site}>
+              <Site class="size-6" />
+              Ir al Sitio Web
+            </LinkButton>
+          )}
+        </footer>
+      </article>
+    ))
+  }
+</Section>
