@@ -5,16 +5,22 @@ import ExperienceSection from '../components/ExperienceSection.astro'
 import ProjectsSection from '../components/ProjectsSection.astro'
 import AboutSection from '../components/AboutSection.astro'
 import MoreProjectsSection from '../components/MoreProjectsSection.astro'
+import Header from '@/components/Header.astro'
+import Footer from '@/components/Footer.astro'
+import EditorUI from '@/components/ui/editor/EditorUI.astro'
 ---
 
 <Layout
   title="<Ignacio Molina ✌️ /> Portfolio"
   description="+2 años de experiencia en proyectos freelance. Apasionado por el diseño y el desarrollo. Me integro en la visión de diseño de tu proyecto para desarrollar webs únicas. Actualmente en Santiago, Chile 🆑">
-  <main class="px-4 max-w-4xl w-full mx-auto">
-    <ContactSection />
-    <ExperienceSection />
-    <ProjectsSection />
-    <MoreProjectsSection />
-    <AboutSection />
+  <!-- <Header /> -->
+  <main class="p-4 w-full">
+    <EditorUI />
+    <!-- <ContactSection /> -->
+    <!-- <ExperienceSection /> -->
+    <!-- <ProjectsSection /> -->
+    <!-- <MoreProjectsSection /> -->
+    <!-- <AboutSection /> -->
   </main>
+  <!-- <Footer /> -->
 </Layout>

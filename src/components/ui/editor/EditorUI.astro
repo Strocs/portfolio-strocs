@@ -1,0 +1,70 @@
+---
+interface Project {
+  name: string
+  description: string
+  technologies: string[]
+}
+
+const projects: Record<string, Project[]> = {}
+const searchQuery = ''
+
+const filteredProjects = Object.entries(projects).reduce(
+  (acc, [year, yearProjects]) => {
+    const filtered = yearProjects.filter(
+      (project) =>
+        project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        project.technologies.some((tech) =>
+          tech.toLowerCase().includes(searchQuery.toLowerCase())
+        ) ||
+        year.includes(searchQuery)
+    )
+    if (filtered.length > 0) {
+      acc[year] = filtered
+    }
+    return acc
+  },
+  {} as typeof projects
+)
+---
+
+<main class="size-full bg-[#141416] text-gray-100">
+  <div
+    class="h-full border border-[#2c2c30] rounded-lg overflow-hidden flex flex-col">
+    <header
+      class="p-2 bg-[#18181b] flex items-center justify-between border-b border-[#2c2c30]">
+      <div class="w-20"></div>
+      <div class="flex-grow max-w-2xl mx-auto">
+        <div class="relative">
+          <!-- SEARCH COMPONENT -->
+        </div>
+      </div>
+      <div>
+        <!-- WINDOW BUTTONS   -->
+      </div>
+    </header>
+
+    <div class="flex-grow flex overflow-hidden">
+      <nav
+        class="w-64 flex-shrink-0 bg-[#18181b] overflow-y-auto flex flex-col border-r border-[#2c2c30]">
+        <div class="p-4">
+          <span class="text-sm font-medium">Files</span>
+        </div>
+        <div class="flex-grow overflow-y-auto">
+          <!-- FILE LIST -->
+        </div>
+      </nav>
+
+      <section class="flex-grow overflow-hidden flex flex-col">
+        <div
+          class="bg-[#18181b] px-4 py-2 flex items-center border-b border-[#2c2c30]">
+          <header id="breadcrumbs" class="flex items-center space-x-2 text-sm">
+            <!-- <Home size={16} /> -->
+            <span>/</span>
+          </header>
+        </div>
+        <div class="flex-grow overflow-y-auto p-4"></div>
+      </section>
+    </div>
+  </div>
+</main>
