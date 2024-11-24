@@ -1,0 +1,37 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types'
+
+type TagType = 'button' | 'a'
+
+const classVariants = {
+  default: 'px-12',
+  large: 'px-16',
+  square: 'px-2 aspect-square',
+}
+
+type Props<TagName extends HTMLTag = HTMLTag> = {
+  variants?: keyof typeof classVariants
+  class?: string
+} & Polymorphic<{ as: TagName & TagType }>
+
+// Must declare 'as' type as any because Tag element not recognize the polymorhpic,
+// this must be fixed removing the = HTMLTag in the Props type declaration,
+// but it make all other props as any.
+// NOTE: This issues only be relevant for the componet itself, and not in the implementation.
+const {
+  as: Tag = 'button' as any,
+  class: customClass,
+  variants = 'default',
+  ...props
+} = Astro.props
+---
+
+<Tag
+  class:list={[
+    'bg-foreground py-2 leading-none text-background rounded-sm hover:bg-background hover:text-foreground hover:outline-foreground outline-dashed outline-1 duration-150',
+    classVariants[variants],
+    customClass,
+  ]}
+  {...props}>
+  <slot />
+</Tag>
