@@ -1,94 +1,93 @@
 ---
-import React from "./icons/React.astro";
-import TailwindCSS from "./icons/TailwindCSS.astro";
-import Firebase from "./icons/Firebase.astro";
-import ReactRouter from "./icons/ReactRouter.astro";
-import AstroIcon from "./icons/AstroIcon.astro";
-import Javascript from "./icons/Javascript.astro";
-import CSS from "./icons/CSS.astro";
-import HTML from "./icons/HTML.astro";
+import React from './icons/React.astro'
+import TailwindCSS from './icons/TailwindCSS.astro'
+import Firebase from './icons/Firebase.astro'
+import ReactRouter from './icons/ReactRouter.astro'
+import AstroIcon from './icons/AstroIcon.astro'
+import Javascript from './icons/Javascript.astro'
+import CSS from './icons/CSS.astro'
+import HTML from './icons/HTML.astro'
 
 interface Props {
-  tagList: string[];
+  tagList: string[]
 }
 
 interface TAGS {
   [key: string]: {
-    name: string;
-    colors: string;
-    icon: string | ((_props: Record<string, any>) => any);
-  };
+    name: string
+    colors: string
+    icon: string | ((_props: Record<string, any>) => any)
+  }
 }
 
 const TAGS: TAGS = {
   ASTRO: {
-    name: "AstroJs",
-    colors: "bg-red-900/60",
+    name: 'AstroJs',
+    colors: 'bg-red-900/60',
     icon: AstroIcon,
   },
   TAILWIND: {
-    name: "TailwindCSS",
-    colors: "bg-cyan-900/60",
+    name: 'TailwindCSS',
+    colors: 'bg-cyan-900/60',
     icon: TailwindCSS,
   },
   REACT: {
-    name: "ReactJs",
-    colors: "bg-blue-900/60",
+    name: 'ReactJs',
+    colors: 'bg-blue-900/60',
     icon: React,
   },
   FIREBASE: {
-    name: "Firebase",
-    colors: "bg-yellow-900/60",
+    name: 'Firebase',
+    colors: 'bg-yellow-900/60',
     icon: Firebase,
   },
   ZUSTAND: {
-    name: "Zustand",
-    colors: "bg-orange-900/80",
-    icon: "https://github.com/pmndrs/zustand/blob/main/examples/demo/public/logo192.png?raw=true",
+    name: 'Zustand',
+    colors: 'bg-orange-900/80',
+    icon: 'https://github.com/pmndrs/zustand/blob/main/examples/demo/public/logo192.png?raw=true',
   },
   REACT_ROUTER: {
-    name: "React Router",
-    colors: "bg-red-900/80",
+    name: 'React Router',
+    colors: 'bg-red-900/80',
     icon: ReactRouter,
   },
   JAVASCRIPT: {
-    name: "JavaScript",
-    colors: "bg-yellow-900/80",
+    name: 'JavaScript',
+    colors: 'bg-yellow-900/80',
     icon: Javascript,
   },
   CSS: {
-    name: "CSS",
-    colors: "bg-blue-900/80",
+    name: 'CSS',
+    colors: 'bg-blue-900/80',
     icon: CSS,
   },
   HTML: {
-    name: "HTML",
-    colors: "bg-red-900/80",
+    name: 'HTML',
+    colors: 'bg-red-900/80',
     icon: HTML,
   },
-};
+}
 
-const { tagList = [] } = Astro.props;
-const tags = tagList.map((tag) => TAGS[tag.toUpperCase()]);
+const { tagList = [] } = Astro.props
+const tags = tagList.map((tag) => TAGS[tag.toUpperCase()])
 ---
 
-<ul class="flex gap-2 sm:gap-4 flex-wrap">
+<ul class='flex gap-2 sm:gap-4 flex-wrap'>
   {
     tags.map((tag) => (
       <li
         class:list={[
-          "flex gap-x-2 rounded-md text-xs py-1 px-2 sm:py-2 sm:px-3",
+          'flex gap-x-2 rounded-md text-xs py-1 px-2 sm:py-2 sm:px-3',
           tag.colors,
-        ]}
-      >
-        {typeof tag.icon === "string" ? (
+        ]}>
+        {typeof tag.icon === 'string' ? (
           <img
-            class="size-4"
+            class='size-4'
             src={tag.icon}
             alt={`Logo de Zustand ${tag.name}`}
           />
         ) : (
-          <tag.icon class="size-4" />
+          <tag.icon class='size-4' />
         )}
         {tag.name}
       </li>

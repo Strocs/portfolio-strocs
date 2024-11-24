@@ -14,4 +14,5 @@ export default {
   singleQuote: true,
   bracketSameLine: true,
   astroAllowShorthand: true,
+  jsxSingleQuote: true,
 }
