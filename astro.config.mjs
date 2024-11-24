@@ -8,11 +8,10 @@ import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://stocs.dev',
   integrations: [tailwind(), sitemap()],
   output: 'static',
   adapter: vercel({
-    webAnalytics: { enabled: true },
-  }),
+    webAnalytics: { enabled: true }
+  })
 })
 
