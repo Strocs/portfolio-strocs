@@ -21,15 +21,15 @@ const {
 } = Astro.props
 
 const variants: Record<Variants, string> = {
-  default: 'px-12',
-  lg: 'px-16',
+  default: 'size-min px-12',
+  lg: 'size-min px-16',
   square: 'size-[30px] aspect-square',
 }
 ---
 
 <Tag
   class:list={[
-    'size-min whitespace-nowrap rounded-sm bg-foreground py-2 font-azeret text-sm font-light leading-none text-background outline-dashed outline-1 duration-150 hover:bg-background hover:text-foreground hover:outline-foreground',
+    'whitespace-nowrap rounded bg-foreground bg-opacity-50 py-2 font-azeret text-sm font-light leading-none text-background outline-1 backdrop-blur-md duration-150 hover:bg-transparent hover:text-foreground hover:outline hover:outline-foreground',
     variants[variant],
     customClass,
   ]}

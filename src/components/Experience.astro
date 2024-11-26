@@ -1,0 +1,75 @@
+---
+import type { Project } from '@/interfaces/projects'
+import Indicator from './ui/Indicator.astro'
+import Paragraph from './ui/Paragraph.astro'
+import Title from './ui/Title.astro'
+import Works from './Works.astro'
+
+interface Experience {
+  title: string
+  description: string
+  from: string
+  to: string
+  works: Omit<Project, 'images' | 'techs'>[]
+}
+
+const experience: Experience = {
+  title: 'Desarrollador Freelance',
+  description:
+    'Desarrollo sitios web con alto rendimiento, utilizando Astro como framework principal, me gusta comprender a profundidad las características del producto de los clientes para crear un sitio web que encaje a la perfección con sus necesidades.',
+  from: '2022',
+  to: 'Actualidad',
+  works: [
+    {
+      title: 'LoungeFi',
+      description:
+        '_LoungeFi es una aplicación web para enfocarse en las tareas diarias,  nace de la idea de crear una aplicación sencilla siguiendo la filosofía  de "Si tienes una idea, programala y listo".',
+      repositoryUrl: 'https://github.com/loungefi/loungefi',
+      webUrl: 'https://loungefi.com',
+      slug: '/',
+      active: true,
+    },
+    {
+      title: 'Festival Frijol Mágico',
+      description:
+        '_LoungeFi es una aplicación web para enfocarse en las tareas diarias,  nace de la idea de crear una aplicación sencilla siguiendo la filosofía  de "Si tienes una idea, programala y listo".',
+      repositoryUrl: 'https://github.com/loungefi/loungefi',
+      webUrl: 'https://loungefi.com',
+      slug: '/',
+      active: false,
+    },
+    {
+      title: 'ARC 2024',
+      description:
+        '_LoungeFi es una aplicación web para enfocarse en las tareas diarias,  nace de la idea de crear una aplicación sencilla siguiendo la filosofía  de "Si tienes una idea, programala y listo".',
+      repositoryUrl: 'https://github.com/loungefi/loungefi',
+      webUrl: 'https://loungefi.com',
+      slug: '/',
+      active: true,
+    },
+    {
+      title: 'Relatos de Barrios',
+      description:
+        '_LoungeFi es una aplicación web para enfocarse en las tareas diarias,  nace de la idea de crear una aplicación sencilla siguiendo la filosofía  de "Si tienes una idea, programala y listo".',
+      repositoryUrl: 'https://github.com/loungefi/loungefi',
+      webUrl: 'https://loungefi.com',
+      slug: '/',
+      active: false,
+    },
+  ],
+}
+
+const { title, description, from, to, works } = experience
+---
+
+<div class='grid w-full max-w-[660px] grid-cols-[1fr_auto] gap-4'>
+  <Indicator class='mt-1.5' />
+  <section class='grid gap-4'>
+    <header class='flex max-w-[660px] justify-between'>
+      <Title variant='lg' as='h2' content={title} />
+      <p class='text-lg text-foreground'>{from} - {to}</p>
+    </header>
+    <Paragraph content={description} />
+    <Works {works} />
+  </section>
+</div>

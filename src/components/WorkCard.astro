@@ -12,15 +12,14 @@ interface Props {
   repositoryUrl?: string
   webUrl?: string
   active: boolean
-  moreUrl?: string
+  slug?: string
 }
 
-const { title, description, repositoryUrl, webUrl, active, moreUrl } =
-  Astro.props
+const { title, description, repositoryUrl, webUrl, active, slug } = Astro.props
 ---
 
 <section
-  class='grid size-full max-h-60 max-w-[420px] grid-rows-[fit-content(100%)_auto_fit-content(100%)] gap-2 rounded-lg border border-dashed border-foreground px-6 pb-6 pt-4 text-foreground'>
+  class='grid h-60 w-full max-w-[420px] grid-rows-[fit-content(100%)_auto_fit-content(100%)] gap-2 rounded-lg border border-dashed border-slate-200/20 px-6 pb-6 pt-4 text-foreground'>
   <header class='flex size-fit items-center gap-4'>
     <div class='flex items-center gap-2'>
       <Status {active} />
@@ -36,5 +35,5 @@ const { title, description, repositoryUrl, webUrl, active, moreUrl } =
     </a>
   </header>
   <Paragraph content={description} class='leading-tight' />
-  <Button as='a' href={moreUrl} class=''>Ver más</Button>
+  <Button as='a' href={slug} class=''>Ver más</Button>
 </section>

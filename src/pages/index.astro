@@ -1,35 +1,19 @@
 ---
+import Experience from '@/components/Experience.astro'
 import Layout from '../layouts/Layout.astro'
-import Project from '@/components/Project.astro'
-
-const loungefi = {
-  title: 'Festival Frijol Mágico',
-  description:
-    '_LoungeFi es una aplicación web para enfocarse en las tareas diarias,  nace de la idea de crear una aplicación sencilla siguiendo la filosofía  de "Si tienes una idea, programala y listo".',
-  repositoryUrl: 'https://github.com/loungefi/loungefi',
-  webUrl: 'https://loungefi.com',
-  active: true,
-  slug: '/',
-  techs: ['Javascript', 'React', 'Next.js', 'TailwindCSS'],
-  images: [
-    {
-      src: '/assets/images/portfolio/loungefi.png',
-      alt: 'LoungeFi',
-    },
-    {
-      src: '/assets/images/portfolio/loungefi.png',
-      alt: 'LoungeFi',
-    },
-    {
-      src: '/assets/images/portfolio/loungefi.png',
-      alt: 'LoungeFi',
-    },
-  ],
-}
+import Hero from '@/components/Hero.astro'
+import Projects from '@/components/Projects.astro'
 ---
 
 <Layout title='Welcome to Astro.'>
-  <main class='grid min-h-screen place-items-center bg-background'>
-    <Project {...loungefi} />
-  </main>
+  <div aria-hidden='true' class='grid grid-cols-[630px_auto]'>
+    <aside class='w-full'>
+      <nav></nav>
+    </aside>
+    <main class='grid gap-52'>
+      <Hero />
+      <Experience />
+      <Projects />
+    </main>
+  </div>
 </Layout>

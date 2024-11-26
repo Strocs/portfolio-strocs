@@ -1,0 +1,71 @@
+---
+import Title from './ui/Title.astro'
+import Paragraph from './ui/Paragraph.astro'
+import Button from './ui/Button.astro'
+import Badge from './ui/Badge.astro'
+
+const info = {
+  title: 'Hola! <br> Soy <strong>Ignacio Molina</strong>',
+  subTitle: 'Desarrollador Full Stack enfocado en el Frontend',
+  description:
+    '+2 años de experiencia creando sitios web personalizados como freelance. Mi formación como Arquitecto me entregó la capacidad de analizar proyectos desde una perspectiva estructural, asegurando gran atención al detalle y conciencia del proceso.',
+  contact: [
+    {
+      type: 'default',
+      label: 'LinkedIn',
+      url: '/',
+    },
+    {
+      type: 'default',
+      label: 'Github',
+      url: '/',
+    },
+    {
+      type: 'default',
+      label: 'Curriculum',
+      url: '/',
+    },
+    {
+      type: 'square',
+      label: 'E',
+      url: '/',
+    },
+    {
+      type: 'square',
+      label: 'P',
+      url: '/',
+    },
+  ],
+}
+
+const { title, subTitle, description, contact } = info
+---
+
+<div aria-hidden='true' class='-mb-72 grid min-h-screen items-center'>
+  <header class='max-w-[660px]'>
+    <div aria-hidden='true' class='relative mb-6'>
+      <Title as='h1' content={title} variant='xl' class='mb-2' />
+      <Title as='h2' content={subTitle} />
+      <Badge
+        label='Disponible para trabajar'
+        variant='lg'
+        class='absolute right-0 top-1/4 rotate-12'
+      />
+    </div>
+    <Paragraph variant='xl' content={description} />
+    <ul class='mt-10 flex gap-4'>
+      {
+        contact.map((info) => (
+          <li class='shrink-0'>
+            <Button
+              variant={info.type as 'default' | 'square'}
+              href={info.url}
+              as='a'>
+              {info.label}
+            </Button>
+          </li>
+        ))
+      }
+    </ul>
+  </header>
+</div>

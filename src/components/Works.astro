@@ -1,0 +1,28 @@
+---
+import type { Project } from '@/interfaces/projects'
+import Title from './ui/Title.astro'
+import Indicator from './ui/Indicator.astro'
+import WorkCard from './WorkCard.astro'
+
+interface Props {
+  works: Omit<Project, 'images' | 'techs'>[]
+}
+
+const { works } = Astro.props
+---
+
+<section class='grid gap-4'>
+  <header class='flex items-center gap-4'>
+    <Indicator />
+    <Title content='Trabajos realizados' as='h2' />
+  </header>
+  <ul class='flex gap-10'>
+    {
+      works.map((work) => (
+        <li class='shrink-0'>
+          <WorkCard {...work} />
+        </li>
+      ))
+    }
+  </ul>
+</section>
