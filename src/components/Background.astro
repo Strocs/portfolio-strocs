@@ -1,0 +1,41 @@
+---
+import Noise from './Noise.astro'
+---
+
+<div aria-hidden='true' class='fixed inset-0 -z-10'>
+  <Noise class='opacity-50' />
+</div>
+
+<style>
+  @property --x {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 50%;
+  }
+  @property --y {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 50%;
+  }
+  div {
+    background: radial-gradient(
+      circle farthest-corner at var(--x) var(--y),
+      oklch(50% 0.08 260) 10%,
+      oklch(22% 0.01 200) 100%
+    );
+    animation: bgAnimation;
+    animation-duration: auto;
+    animation-timeline: scroll();
+  }
+
+  @keyframes bgAnimation {
+    from {
+      --x: 50%;
+      --y: 50%;
+    }
+    to {
+      --x: 100%;
+      --y: 100%;
+    }
+  }
+</style>
