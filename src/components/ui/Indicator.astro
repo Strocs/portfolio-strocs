@@ -1,0 +1,20 @@
+---
+type Size = 'sm' | 'md' | 'lg'
+interface Props {
+  size?: Size
+}
+
+const { size = 'md' } = Astro.props
+
+const sizes: Record<Size, string> = {
+  sm: 'w-3 h-4',
+  md: 'w-4 h-5',
+  lg: 'w-5 h-6',
+}
+---
+
+<span
+  class:list={[
+    sizes[size],
+    'inline-block shrink-0 bg-foreground [clip-path:polygon(0_0,0_100%,100%_50%)]',
+  ]}></span>
