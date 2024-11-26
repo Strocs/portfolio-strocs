@@ -22,14 +22,14 @@ const {
 } = Astro.props
 
 const variants: Record<Variants, string> = {
-  default: 'text-2xl',
-  lg: 'text-3xl',
-  xl: 'text-5xl leading-tight',
+  default: 'text-xl font-sans',
+  lg: 'text-2xl font-azeret ',
+  xl: 'text-5xl leading-tight font-azeret ',
 }
 ---
 
 <Tag
-  class:list={['font-azeret text-foreground', variants[variant], customClass]}
+  class:list={['text-foreground', variants[variant], customClass]}
   {...props}
   set:html={content}
 />
