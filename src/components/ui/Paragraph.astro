@@ -1,0 +1,33 @@
+---
+type Variants = 'default' | 'xl'
+
+interface Props {
+  variant?: Variants
+  content: string | Array<string>
+}
+
+const { variant = 'default', content, ...props } = Astro.props
+
+const variants: Record<Variants, string> = {
+  default: 'text-base',
+  xl: 'text-xl',
+}
+---
+
+{
+  typeof content === 'string' ? (
+    <p
+      class:list={['max-w-[660px] text-foreground', variants[variant]]}
+      {...props}
+      set:html={content}
+    />
+  ) : (
+    content.map((item) => (
+      <p
+        class:list={['my-2 max-w-[660px] text-foreground', variants[variant]]}
+        {...props}
+        set:html={item}
+      />
+    ))
+  )
+}
