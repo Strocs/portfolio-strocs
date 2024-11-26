@@ -3,6 +3,8 @@ import Title from '@/components/ui/Title.astro'
 import TitleLink from '@/components/ui/TitleLink.astro'
 import Status from '@/components/ui/Status.astro'
 import Github from '@/components/icons/Github.astro'
+import Paragraph from './ui/Paragraph.astro'
+import Button from './ui/Button.astro'
 
 interface Props {
   title: string
@@ -12,18 +14,27 @@ interface Props {
   active: boolean
   moreUrl?: string
 }
+
+const { title, description, repositoryUrl, webUrl, active, moreUrl } =
+  Astro.props
 ---
 
-<section>
-  <header class='flex items-center gap-4'>
+<section
+  class='grid size-full max-h-60 max-w-[420px] grid-rows-[fit-content(100%)_auto_fit-content(100%)] gap-2 rounded-lg border border-dashed border-foreground px-6 pb-6 pt-4 text-foreground'>
+  <header class='flex size-fit items-center gap-4'>
     <div class='flex items-center gap-2'>
-      <Status active={false} />
-      <TitleLink href='/'>
-        <Title as='h3' content='_LoungeFi' />
+      <Status {active} />
+      <TitleLink href={webUrl}>
+        <Title as='h3' content={title} />
       </TitleLink>
     </div>
-    <a href='/' aria-label='Repository Link'>
-      <Github class='size-6 text-foreground' />
+    <a
+      href={repositoryUrl}
+      aria-label='Repository Link'
+      class='hover:scale-105'>
+      <Github class='size-5 text-foreground' />
     </a>
   </header>
+  <Paragraph content={description} class='leading-tight' />
+  <Button as='a' href={moreUrl} class=''>Ver más</Button>
 </section>
