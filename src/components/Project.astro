@@ -1,0 +1,67 @@
+---
+import Github from './icons/Github.astro'
+import Button from './ui/Button.astro'
+import Indicator from './ui/Indicator.astro'
+import Paragraph from './ui/Paragraph.astro'
+import Status from './ui/Status.astro'
+import Title from './ui/Title.astro'
+import TitleLink from './ui/TitleLink.astro'
+import ProjectGallery from './ProjectGallery.astro'
+import ProjectTechList from './ProjectTechList.astro'
+
+interface Props {
+  title: string
+  description: string
+  repositoryUrl?: string
+  webUrl?: string
+  slug?: string
+  techs: Array<string>
+  active: boolean
+  images: Array<Record<'src' | 'alt', string>>
+}
+
+const {
+  title,
+  description,
+  repositoryUrl,
+  webUrl,
+  slug,
+  active,
+  images,
+  techs,
+} = Astro.props
+---
+
+<div aria-hidden class='grid max-w-[660px] grid-cols-[1fr_auto] gap-4'>
+  <Indicator class='mt-1.5' />
+  <section class='grid gap-6'>
+    <header class='flex size-fit items-center gap-4'>
+      <div class='flex items-center gap-2'>
+        <Status {active} />
+        <TitleLink href={webUrl}>
+          <Title as='h3' variant='lg' content={title} />
+        </TitleLink>
+      </div>
+      {
+        repositoryUrl && (
+          <a
+            href={repositoryUrl}
+            aria-label='Repository Link'
+            class='hover:scale-105'>
+            <Github class='size-5 text-foreground' />
+          </a>
+        )
+      }
+    </header>
+    <Paragraph content={description} class='' />
+    <ProjectTechList {techs} />
+    <ProjectGallery {images} />
+    {
+      slug && (
+        <Button as='a' href={slug}>
+          Ver más
+        </Button>
+      )
+    }
+  </section>
+</div>

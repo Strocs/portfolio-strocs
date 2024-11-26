@@ -1,0 +1,13 @@
+---
+import Badge from './ui/Badge.astro'
+
+interface Props {
+  techs: Array<string>
+}
+
+const { techs } = Astro.props
+---
+
+<ui class='flex flex-wrap gap-4'>
+  {techs.map((tech) => <Badge label={tech} />)}
+</ui>
