@@ -1,0 +1,32 @@
+---
+type Variants = 'default' | 'lg'
+
+interface Props {
+  Icon?: (_Props: Record<string, any>) => any
+  label: string
+  variant?: Variants
+  class?: string | Array<string>
+}
+
+const {
+  Icon = null,
+  label,
+  variant = 'default',
+  class: customClass,
+} = Astro.props as Props
+
+const variants: Record<Variants, string> = {
+  lg: 'py-2 px-6',
+  default: 'py-1 px-4',
+}
+---
+
+<span
+  class:list={[
+    'flex size-min items-center gap-2 whitespace-nowrap rounded-sm border border-dashed border-foreground bg-background font-azeret text-sm leading-none text-foreground',
+    variants[variant],
+    customClass,
+  ]}>
+  {!!Icon && <Icon class='size-4' />}
+  {label}
+</span>
