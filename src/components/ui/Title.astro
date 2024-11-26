@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Variants = 'default' | 'lg' | 'xl'
+
+interface Props
+  extends HTMLAttributes<'h1'>,
+    HTMLAttributes<'h2'>,
+    HTMLAttributes<'h3'> {
+  variant?: Variants
+  as: 'h1' | 'h2' | 'h3'
+  class?: string
+  content: string
+}
+
+const {
+  variant = 'default',
+  as: Tag = 'h2',
+  class: customClass,
+  content,
+  ...props
+} = Astro.props
+
+const variants: Record<Variants, string> = {
+  default: 'text-2xl',
+  lg: 'text-3xl',
+  xl: 'text-5xl leading-tight',
+}
+---
+
+<Tag
+  class:list={['font-azeret text-foreground', variants[variant], customClass]}
+  {...props}
+  set:html={content}
+/>
