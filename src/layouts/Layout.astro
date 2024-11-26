@@ -1,4 +1,6 @@
 ---
+import { AstroFont } from 'astro-font'
+
 interface Props {
   title: string
 }
@@ -13,8 +15,21 @@ const { title } = Astro.props
     <meta name='description' content='Astro description' />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
+    <AstroFont
+      config={[
+        {
+          src: [],
+          name: 'Azeret Mono',
+          googleFontsURL:
+            'https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap',
+          preload: true,
+          display: 'swap',
+          selector: 'h1, h2, h3',
+          fallback: 'monospace',
+        },
+      ]}
+    />
   </head>
   <body>
     <slot />
