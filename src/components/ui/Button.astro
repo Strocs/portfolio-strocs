@@ -1,16 +1,11 @@
 ---
 import type { HTMLTag, Polymorphic } from 'astro/types'
 
+type Variants = 'default' | 'lg' | 'square'
 type TagType = 'button' | 'a'
 
-const classVariants = {
-  default: 'px-12',
-  large: 'px-16',
-  square: 'px-2 aspect-square',
-}
-
 type Props<TagName extends HTMLTag = HTMLTag> = {
-  variants?: keyof typeof classVariants
+  variant?: Variants
   class?: string
 } & Polymorphic<{ as: TagName & TagType }>
 
@@ -21,15 +16,21 @@ type Props<TagName extends HTMLTag = HTMLTag> = {
 const {
   as: Tag = 'button' as any,
   class: customClass,
-  variants = 'default',
+  variant = 'default',
   ...props
 } = Astro.props
+
+const variants: Record<Variants, string> = {
+  default: 'px-12',
+  lg: 'px-16',
+  square: 'size-[30px] aspect-square',
+}
 ---
 
 <Tag
   class:list={[
-    'rounded-sm bg-foreground py-2 leading-none text-background outline-dashed outline-1 duration-150 hover:bg-background hover:text-foreground hover:outline-foreground',
-    classVariants[variants],
+    'size-min whitespace-nowrap rounded-sm bg-foreground py-2 font-azeret text-sm font-light leading-none text-background outline-dashed outline-1 duration-150 hover:bg-background hover:text-foreground hover:outline-foreground',
+    variants[variant],
     customClass,
   ]}
   {...props}>
