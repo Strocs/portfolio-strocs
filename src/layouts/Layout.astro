@@ -1,5 +1,6 @@
 ---
 import { AstroFont } from 'astro-font'
+import Background from '@/components/Background.astro'
 
 interface Props {
   title: string
@@ -32,12 +33,13 @@ const { title } = Astro.props
     />
   </head>
   <body class='w-screen overflow-x-hidden'>
+    <Background />
     <slot />
   </body>
 </html>
 <style is:global>
   :root {
-    --background: hsl(206, 10%, 10%);
-    --foreground: hsl(206, 10%, 90%);
+    --background: oklch(21.02% 0.006 285.87);
+    --foreground: oklch(96.83% 0.0014 286.37);
   }
 </style>
