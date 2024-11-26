@@ -1,0 +1,29 @@
+---
+import Title from '@/components/ui/Title.astro'
+import TitleLink from '@/components/ui/TitleLink.astro'
+import Status from '@/components/ui/Status.astro'
+import Github from '@/components/icons/Github.astro'
+
+interface Props {
+  title: string
+  description: string
+  repositoryUrl?: string
+  webUrl?: string
+  active: boolean
+  moreUrl?: string
+}
+---
+
+<section>
+  <header class='flex items-center gap-4'>
+    <div class='flex items-center gap-2'>
+      <Status active={false} />
+      <TitleLink href='/'>
+        <Title as='h3' content='_LoungeFi' />
+      </TitleLink>
+    </div>
+    <a href='/' aria-label='Repository Link'>
+      <Github class='size-6 text-foreground' />
+    </a>
+  </header>
+</section>
