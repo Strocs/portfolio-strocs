@@ -1,11 +1,74 @@
 ---
+import Badge from '@/components/ui/Badge.astro'
 import Layout from '../layouts/Layout.astro'
 import Button from '@/components/ui/Button.astro'
+import Javascript from '@/components/icons/Javascript.astro'
+import Status from '@/components/ui/Status.astro'
+import TitleLink from '@/components/ui/TitleLink.astro'
+import Github from '@/components/icons/Github.astro'
+import Paragraph from '@/components/ui/Paragraph.astro'
+import Indicator from '@/components/ui/Indicator.astro'
+import Title from '@/components/ui/Title.astro'
 ---
 
 <Layout title='Welcome to Astro.'>
   <main class='grid min-h-screen place-items-center bg-background'>
-    <Button> Ver más </Button>
-    <Button variants='square'> CV </Button>
+    <div class='flex items-end gap-4'>
+      <Button> Ver más </Button>
+      <Button variant='square'> CV </Button>
+    </div>
+    <div class='flex items-end gap-4'>
+      <Badge label='Disponible para trabajar' variant='lg' />
+      <Badge label='Typescript' Icon={Javascript} />
+    </div>
+    <div class='flex gap-4'>
+      <Status active />
+      <Status active={false} />
+    </div>
+    <div class='flex items-end gap-8'>
+      <div class='flex items-center gap-4'>
+        <div class='flex items-center gap-2'>
+          <Status active />
+          <TitleLink href='/'> ARC 2024 </TitleLink>
+        </div>
+        <a href='/' aria-label='Repository Link'>
+          <Github class='size-6 text-foreground' />
+        </a>
+      </div>
+      <div class='flex items-center gap-4'>
+        <div class='flex items-center gap-2'>
+          <Status active={false} />
+          <TitleLink href='/'>
+            <Title as='h3' content='_LoungeFi' />
+          </TitleLink>
+        </div>
+        <a href='/' aria-label='Repository Link'>
+          <Github class='size-6 text-foreground' />
+        </a>
+      </div>
+    </div>
+    <div class=''>
+      <Indicator />
+    </div>
+    <div>
+      <Paragraph
+        variant='xl'
+        content={'+2 años de experiencia creando sitios web personalizados como freelance. Mi formación como Arquitecto me entregó la capacidad de analizar proyectos desde una perspectiva estructural, asegurando gran atención al detalle y conciencia del proceso.'}
+      />
+      <Paragraph
+        content={[
+          'Hace dos años nació mi interés por la programación y el desarrollo de software. En ese momento, mientras cursaba la fase de titulación en Arquitectura, me di cuenta que mi verdadera pasión era ser desarrollador.',
+          'Comencé mi aprendizaje de forma autodidacta, estudiando HTML y CSS con profesores como Midudev y aprovechando los Platzi Day. Luego, adquirí cursos de JavaScript Moderno, React, Next.js y Node.js del profesor Fernando Herrera. Paralelamente, investigaba temas como estrategias de renderizado, bases de datos, arquitectura de software, buenas prácticas y más.',
+          'Actualmente, trabajo como desarrollador freelance utilizando Astro y centrándome en el rendimiento de mis proyectos. Como objetivo a futuro, espero seguir mejorando y aprendiendo cada día más.',
+        ]}
+      />
+    </div>
+    <div>
+      <Title
+        variant='xl'
+        as='h1'
+        content='Hola! <br /> Soy <strong>Ignacio Molina</strong>'
+      />
+    </div>
   </main>
 </Layout>
