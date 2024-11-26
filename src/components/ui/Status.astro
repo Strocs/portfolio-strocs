@@ -1,0 +1,14 @@
+---
+interface Props {
+  active: boolean
+}
+
+const { active } = Astro.props
+---
+
+<span
+  class:list={[
+    'aspect-square size-1.5 rounded-full',
+    active ? 'animate-pulse bg-green-500' : 'bg-gray-600',
+  ]}>
+</span>
