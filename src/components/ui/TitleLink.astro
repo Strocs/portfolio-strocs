@@ -11,14 +11,14 @@ const { class: customClass, ...props } = Astro.props
 
 <a
   class:list={[
-    'group flex size-min items-center gap-2 whitespace-nowrap font-bold text-foreground',
+    'group flex size-min items-center gap-2 whitespace-nowrap text-foreground',
     customClass,
   ]}
   {...props}>
   <div
     class:list={[
-      'relative w-fit overflow-x-hidden',
-      'after:absolute after:-left-full after:bottom-0 after:w-full after:border-b after:border-dashed after:border-b-foreground after:transition-[left] after:duration-300 after:group-hover:left-0',
+      'relative w-fit overflow-x-hidden font-bold',
+      'after:absolute after:-left-full after:bottom-0 after:w-full after:border-b after:border-b-foreground after:transition-[left] after:duration-150 after:group-hover:left-0',
     ]}>
     <slot />
   </div>
