@@ -11,8 +11,13 @@ export default {
       },
       fontFamily: {
         azeret: ['Azeret Mono Variable', ...defaultTheme.fontFamily.sans],
+      },
+      maxWidth: {
+        'max': 'var(--max-with)'
+      },
+      margin: {
+        'indent': 'var(--indent)'
       }
-
     },
   },
   plugins: [],

@@ -1,6 +1,6 @@
 ---
 import type { Project as TProject } from '@/interfaces/projects'
-import Project from './Project.astro'
+import Project from './components/Project.astro'
 
 const loungefi: TProject = {
   title: '_LoungeFi',
@@ -33,6 +33,6 @@ const projects: TProject[] = [
 ]
 ---
 
-<section class='grid gap-20'>
+<section class='grid gap-24'>
   {projects.map((project) => <Project {...project} />)}
 </section>

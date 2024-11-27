@@ -1,11 +1,11 @@
 ---
-import Github from './icons/Github.astro'
-import Button from './ui/Button.astro'
-import Indicator from './ui/Indicator.astro'
-import Paragraph from './ui/Paragraph.astro'
-import Status from './ui/Status.astro'
-import Title from './ui/Title.astro'
-import TitleLink from './ui/TitleLink.astro'
+import Github from '@/components/icons/Github.astro'
+import Button from '@/components/ui/Button.astro'
+import Indicator from '@/components/ui/Indicator.astro'
+import Paragraph from '@/components/ui/Paragraph.astro'
+import Status from '@/components/ui/Status.astro'
+import Title from '@/components/ui/Title.astro'
+import TitleLink from '@/components/ui/TitleLink.astro'
 import ProjectGallery from './ProjectGallery.astro'
 import ProjectTechList from './ProjectTechList.astro'
 
@@ -32,10 +32,10 @@ const {
 } = Astro.props
 ---
 
-<div aria-hidden='true' class='grid max-w-[660px] grid-cols-[1fr_auto] gap-4'>
-  <Indicator class='mt-1.5' />
-  <section class='grid gap-6'>
-    <header class='flex size-fit items-center gap-4'>
+<section class='max-w-max space-y-4'>
+  <header class='flex items-center'>
+    <Indicator />
+    <div class='flex size-fit items-center gap-4'>
       <div class='flex items-center gap-2'>
         <Status {active} />
         <TitleLink href={webUrl}>
@@ -52,7 +52,9 @@ const {
           </a>
         )
       }
-    </header>
+    </div>
+  </header>
+  <div aria-hidden='true' class='ml-indent space-y-6'>
     <Paragraph content={description} class='' />
     <ProjectTechList {techs} />
     <ProjectGallery {images} />
@@ -63,5 +65,5 @@ const {
         </Button>
       )
     }
-  </section>
-</div>
+  </div>
+</section>

@@ -14,9 +14,11 @@ const sizes: Record<Size, string> = {
 }
 ---
 
-<span
-  class:list={[
-    sizes[size],
-    'inline-block shrink-0 bg-foreground opacity-20 [clip-path:polygon(0_0,0_100%,100%_50%)]',
-    customClass,
-  ]}></span>
+<div class='inline-block w-8'>
+  <span
+    class:list={[
+      sizes[size],
+      'block shrink-0 bg-foreground opacity-20 [clip-path:polygon(0_0,0_100%,100%_50%)]',
+      customClass,
+    ]}></span>
+</div>

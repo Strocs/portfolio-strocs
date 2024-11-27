@@ -1,14 +1,15 @@
 ---
-import Experience from '@/components/Experience.astro'
-import Layout from '../layouts/Layout.astro'
-import Hero from '@/components/Hero.astro'
-import Projects from '@/components/Projects.astro'
+import Experience from '@/sections/portfolio/experience/Experience.astro'
+import Hero from '@/sections/portfolio/hero/Hero.astro'
+import Nav from '@/sections/portfolio/nav/Nav.astro'
+import Projects from '@/sections/portfolio/projects/Projects.astro'
+import Layout from '@/layouts/Layout.astro'
 ---
 
-<Layout title='Welcome to Astro.'>
+<Layout title='Ignacio Molina - Portfolio'>
   <div aria-hidden='true' class='grid grid-cols-[630px_auto]'>
     <aside class='w-full'>
-      <nav></nav>
+      <Nav />
     </aside>
     <main class='grid gap-52'>
       <Hero />
