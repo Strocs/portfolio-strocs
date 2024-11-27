@@ -3,6 +3,9 @@ import Title from './ui/Title.astro'
 import Paragraph from './ui/Paragraph.astro'
 import Button from './ui/Button.astro'
 import Badge from './ui/Badge.astro'
+import Mail from './icons/Mail.astro'
+import PhoneIcon from './icons/PhoneIcon.astro'
+import { Image } from 'astro:assets'
 
 const info = {
   title: 'Hola! <br> Soy <strong>Ignacio Molina</strong>',
@@ -27,12 +30,12 @@ const info = {
     },
     {
       type: 'square',
-      label: 'E',
+      Icon: Mail,
       url: '/',
     },
     {
       type: 'square',
-      label: 'P',
+      Icon: PhoneIcon,
       url: '/',
     },
   ],
@@ -41,8 +44,15 @@ const info = {
 const { title, subTitle, description, contact } = info
 ---
 
-<div aria-hidden='true' class='-mb-72 grid min-h-screen items-center'>
+<div aria-hidden='true' class='-mb-52 -mt-10 grid min-h-screen items-center'>
   <header class='max-w-[660px]'>
+    <Image
+      src='https://avatars.githubusercontent.com/u/71996940?v=4'
+      alt='Personal Image'
+      width={112}
+      height={112}
+      class='mb-4 ml-3 size-28 rounded-full bg-slate-900/20'
+    />
     <div aria-hidden='true' class='relative mb-6'>
       <Title as='h1' content={title} variant='xl' class='mb-2' />
       <Title as='h2' content={subTitle} />
@@ -61,7 +71,12 @@ const { title, subTitle, description, contact } = info
               variant={info.type as 'default' | 'square'}
               href={info.url}
               as='a'>
-              {info.label}
+              {info.Icon && (
+                <span class='flex size-full items-center justify-center'>
+                  <info.Icon stroke-width='1.5' />
+                </span>
+              )}
+              {info.label && info.label}
             </Button>
           </li>
         ))
