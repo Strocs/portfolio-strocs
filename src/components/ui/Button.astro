@@ -1,13 +1,11 @@
 ---
 import type { HTMLTag, Polymorphic } from 'astro/types'
-
-type Variants = 'default' | 'lg' | 'square'
-type TagType = 'button' | 'a'
+import type { ButtonVariants, ButtonType } from '@/types/button'
 
 type Props<TagName extends HTMLTag = HTMLTag> = {
-  variant?: Variants
+  variant?: ButtonVariants
   class?: string
-} & Polymorphic<{ as: TagName & TagType }>
+} & Polymorphic<{ as: TagName & ButtonType }>
 
 // Must declare 'as' type as any because Tag element not recognize the polymorhpic,
 // this must be fixed removing the = HTMLTag in the Props type declaration,
@@ -20,7 +18,7 @@ const {
   ...props
 } = Astro.props
 
-const variants: Record<Variants, string> = {
+const variants: Record<ButtonVariants, string> = {
   default: 'size-min px-12',
   lg: 'size-min px-16',
   square: 'size-[30px] aspect-square',
