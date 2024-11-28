@@ -1,90 +1,29 @@
 ---
 import Title from '@/components/ui/Title.astro'
 import Paragraph from '@/components/ui/Paragraph.astro'
-import Button from '@/components/ui/Button.astro'
 import Badge from '@/components/ui/Badge.astro'
-import Mail from '@/components/icons/Mail.astro'
-import PhoneIcon from '@/components/icons/PhoneIcon.astro'
-import { Image } from 'astro:assets'
-
-const info = {
-  title: 'Hola! <br> Soy <strong>Ignacio Molina</strong>',
-  subTitle: 'Desarrollador Full Stack enfocado en el Frontend',
-  description:
-    '+2 años de experiencia creando sitios web personalizados como freelance. Mi formación como Arquitecto me entregó la capacidad de analizar proyectos desde una perspectiva estructural, asegurando gran atención al detalle y conciencia del proceso.',
-  contact: [
-    {
-      type: 'default',
-      label: 'LinkedIn',
-      url: '/',
-    },
-    {
-      type: 'default',
-      label: 'Github',
-      url: '/',
-    },
-    {
-      type: 'default',
-      label: 'Curriculum',
-      url: '/',
-    },
-    {
-      type: 'square',
-      label: 'Email',
-      Icon: Mail,
-      url: '/',
-    },
-    {
-      type: 'square',
-      label: 'Phone',
-      Icon: PhoneIcon,
-      url: '/',
-    },
-  ],
-}
-
-const { title, subTitle, description, contact } = info
+import PersonalImage from './components/PersonalImage.astro'
+import ContactLinks from './components/ContactLinks.astro'
+import { title, subTitle, OTWLabel, description } from './data/personal-info'
 ---
 
 <div aria-hidden='true' class='-mb-52 -mt-10 grid min-h-screen items-center'>
-  <header class='max-w-[660px]'>
-    <Image
-      src='https://pub-c0cf7aa50bf54e858e7672913f398381.r2.dev/personal.jpg'
-      alt='Ignacio Molina mirando alegremente de frente en la naturaleza'
-      width={112}
-      height={112}
-      loading='eager'
-      class='mb-4 ml-3 size-28 rounded-full bg-background/20'
-    />
+  <header class='max-w-max'>
+    <PersonalImage />
     <div aria-hidden='true' class='relative mb-6'>
       <Title as='h1' content={title} variant='xl' class='mb-2' />
       <Title as='h2' content={subTitle} />
-      <Badge
-        label='Disponible para trabajar'
-        variant='lg'
-        class='absolute right-0 top-1/4 rotate-12'
-      />
+      {
+        OTWLabel && (
+          <Badge
+            label={OTWLabel}
+            variant='lg'
+            class='absolute right-0 top-1/4 rotate-12'
+          />
+        )
+      }
     </div>
     <Paragraph variant='xl' content={description} />
-    <ul class='mt-10 flex gap-4'>
-      {
-        contact.map((info) => (
-          <li class='shrink-0'>
-            <Button
-              aria-label={info.label}
-              variant={info.type as 'default' | 'square'}
-              href={info.url}
-              as='a'>
-              {info.Icon && (
-                <span class='flex size-full items-center justify-center'>
-                  <info.Icon stroke-width='1.5' />
-                </span>
-              )}
-              {!info.Icon && info.label}
-            </Button>
-          </li>
-        ))
-      }
-    </ul>
+    <ContactLinks />
   </header>
 </div>

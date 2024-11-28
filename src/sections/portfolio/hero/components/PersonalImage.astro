@@ -1,0 +1,13 @@
+---
+import { Image } from 'astro:assets'
+import { src, alt } from '../data/personal-info'
+---
+
+<Image
+  {src}
+  {alt}
+  width={112}
+  height={112}
+  loading='eager'
+  class='mb-4 ml-3 size-28 rounded-full bg-background/20'
+/>

@@ -1,0 +1,25 @@
+---
+import Button from '@/components/ui/Button.astro'
+import { contact } from '../data/contact'
+---
+
+<ul class='mt-10 flex gap-4'>
+  {
+    contact.map(({ label, type, url, Icon }) => (
+      <li class='shrink-0'>
+        <Button
+          aria-label={label}
+          variant={type as 'default' | 'square'}
+          href={url}
+          as='a'>
+          {Icon && (
+            <span class='flex size-full items-center justify-center'>
+              <Icon stroke-width='1.5' />
+            </span>
+          )}
+          {!Icon && label}
+        </Button>
+      </li>
+    ))
+  }
+</ul>
