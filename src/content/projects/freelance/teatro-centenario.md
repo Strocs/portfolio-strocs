@@ -1,5 +1,6 @@
 ---
 title: Teatro Centenario
+date: 2024-03
 extract: Desarrollo de nuevo sitio web para Teatro Centenario de la ciudad de La Serena, Chile.
 repositoryUrl: https://github.com/strocs/arc2023
 webUrl: https://teatrocentenario.cl

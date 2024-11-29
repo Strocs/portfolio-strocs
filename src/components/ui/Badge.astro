@@ -23,10 +23,16 @@ const variants: Record<Variants, string> = {
 
 <span
   class:list={[
-    'flex size-min items-center gap-2 whitespace-nowrap rounded border border-dashed border-foreground font-azeret text-sm leading-none text-foreground',
+    'flex size-min items-center gap-2 whitespace-nowrap rounded font-azeret text-sm leading-none text-foreground outline-dashed outline-1 outline-foreground',
     variants[variant],
     customClass,
   ]}>
   {!!Icon && <Icon class='size-4' />}
   {label}
 </span>
+
+<style>
+  .shadow-light {
+    box-shadow: 0 0 2rem 0 oklch(50% 0.08 260);
+  }
+</style>

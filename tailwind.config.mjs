@@ -17,7 +17,7 @@ export default {
       },
       margin: {
         'indent': 'var(--indent)'
-      }
+      },
     },
   },
   plugins: [],

@@ -2,6 +2,7 @@ import { z } from 'astro:content';
 
 export const ProjectSchema = z.object({
   title: z.string(),
+  date: z.coerce.date(),
   extract: z.string(),
   active: z.boolean(),
   repositoryUrl: z.string().optional(),
@@ -13,4 +14,3 @@ export const ProjectSchema = z.object({
   })).optional(),
 })
 
-export type ProjectSchema = z.infer<typeof ProjectSchema>

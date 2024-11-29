@@ -9,5 +9,4 @@ export const { title, description, from, to }: Experience = {
   to: 'Actualidad',
 }
 
-export const projects = await getCollection('projects')
-
+export const freelanceJobs = await getCollection('projects', ({ id }) => id.includes('freelance')).then(jobs => jobs.sort((a, b) => b.data.date - a.data.date))

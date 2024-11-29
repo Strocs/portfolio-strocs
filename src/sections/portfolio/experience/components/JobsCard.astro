@@ -1,16 +1,14 @@
 ---
+import type { CollectionEntry } from 'astro:content'
+
 import Title from '@/components/ui/Title.astro'
 import TitleLink from '@/components/ui/TitleLink.astro'
 import Status from '@/components/ui/Status.astro'
 import Github from '@/components/icons/Github.astro'
 import Paragraph from '@/components/ui/Paragraph.astro'
 import Button from '@/components/ui/Button.astro'
-import type { ProjectSchema } from '@/schemas/project.schema'
 
-interface Props {
-  data: ProjectSchema
-  slug: string
-}
+type Props = CollectionEntry<'projects'>
 
 const { data, slug } = Astro.props
 const { title, extract, repositoryUrl, webUrl, active } = data
@@ -21,12 +19,13 @@ const { title, extract, repositoryUrl, webUrl, active } = data
   <header class='flex size-fit items-center gap-4'>
     <div class='flex items-center gap-2'>
       <Status {active} />
-      <TitleLink href={webUrl}>
+      <TitleLink target='_blank' href={webUrl}>
         <Title as='h3' content={title} />
       </TitleLink>
     </div>
     <a
       href={repositoryUrl}
+      target='_blank'
       aria-label='Repository Link'
       class='hover:scale-105'>
       <Github class='size-5 text-foreground' />

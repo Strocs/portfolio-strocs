@@ -1,4 +1,5 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import Github from '@/components/icons/Github.astro'
 import Button from '@/components/ui/Button.astro'
 import Indicator from '@/components/ui/Indicator.astro'
@@ -6,25 +7,16 @@ import Paragraph from '@/components/ui/Paragraph.astro'
 import Status from '@/components/ui/Status.astro'
 import Title from '@/components/ui/Title.astro'
 import TitleLink from '@/components/ui/TitleLink.astro'
-import PersonalProjectGallery from './PersonalProjectGallery.astro'
-import PersonalProjectTechList from './PersonalProjectTechList.astro'
+import ProjectGallery from './ProjectGallery.astro'
+import ProjectTechList from './ProjectTechList.astro'
 
-interface Props {
-  title: string
-  extract: string
-  repositoryUrl?: string
-  webUrl?: string
-  slug?: string
-  techs: Array<string>
-  active: boolean
-  images: Array<Record<'src' | 'alt', string>>
-}
+type Props = CollectionEntry<'projects'>
 
-const { title, extract, repositoryUrl, webUrl, slug, active, images, techs } =
-  Astro.props
+const { data, slug } = Astro.props
+const { title, extract, repositoryUrl, webUrl, active, images, techs } = data
 ---
 
-<section class='max-w-max space-y-4'>
+<article class='max-w-max space-y-4'>
   <header class='flex items-center'>
     <Indicator />
     <div class='flex size-fit items-center gap-4'>
@@ -48,8 +40,8 @@ const { title, extract, repositoryUrl, webUrl, slug, active, images, techs } =
   </header>
   <div aria-hidden='true' class='ml-indent space-y-6'>
     <Paragraph content={extract} class='' />
-    <PersonalProjectTechList {techs} />
-    <PersonalProjectGallery {images} />
+    <ProjectTechList {techs} />
+    <ProjectGallery {images} />
     {
       slug && (
         <Button as='a' href={slug}>
@@ -58,4 +50,4 @@ const { title, extract, repositoryUrl, webUrl, slug, active, images, techs } =
       )
     }
   </div>
-</section>
+</article>

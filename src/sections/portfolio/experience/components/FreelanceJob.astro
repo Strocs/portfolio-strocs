@@ -3,9 +3,9 @@ import Indicator from '@/components/ui/Indicator.astro'
 import Paragraph from '@/components/ui/Paragraph.astro'
 import Title from '@/components/ui/Title.astro'
 import List from '@/components/ui/List.astro'
-import ProjectCard from './ProjectCard.astro'
-
-import { title, description, from, to, projects } from '../i18n/freelance'
+import JobsCard from './JobsCard.astro'
+import { title, description, from, to, freelanceJobs } from '../data/freelance'
+console.log(freelanceJobs)
 ---
 
 <article class='grid max-w-max gap-4'>
@@ -22,6 +22,6 @@ import { title, description, from, to, projects } from '../i18n/freelance'
       <Indicator />
       <Title content='Trabajos realizados' as='h2' />
     </header>
-    <List list={projects} Item={ProjectCard} />
+    <List list={freelanceJobs} Item={JobsCard} />
   </section>
 </article>
