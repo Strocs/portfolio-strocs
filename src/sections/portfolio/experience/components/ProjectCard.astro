@@ -5,21 +5,19 @@ import Status from '@/components/ui/Status.astro'
 import Github from '@/components/icons/Github.astro'
 import Paragraph from '@/components/ui/Paragraph.astro'
 import Button from '@/components/ui/Button.astro'
+import type { ProjectSchema } from '@/schemas/project.schema'
 
 interface Props {
-  title: string
-  description: string
-  repositoryUrl?: string
-  webUrl?: string
-  active: boolean
-  slug?: string
+  data: ProjectSchema
+  slug: string
 }
 
-const { title, description, repositoryUrl, webUrl, active, slug } = Astro.props
+const { data, slug } = Astro.props
+const { title, extract, repositoryUrl, webUrl, active } = data
 ---
 
-<section
-  class='bg-foreground-20 grid h-60 w-full max-w-[420px] grid-rows-[fit-content(100%)_auto_fit-content(100%)] gap-2 rounded-lg border border-dashed border-foreground/25 px-6 pb-6 pt-4 text-foreground'>
+<article
+  class='grid h-60 w-full max-w-[420px] grid-rows-[fit-content(100%)_auto_fit-content(100%)] gap-2 rounded-lg border border-dashed border-foreground/25 px-6 pb-6 pt-4 text-foreground'>
   <header class='flex size-fit items-center gap-4'>
     <div class='flex items-center gap-2'>
       <Status {active} />
@@ -34,6 +32,6 @@ const { title, description, repositoryUrl, webUrl, active, slug } = Astro.props
       <Github class='size-5 text-foreground' />
     </a>
   </header>
-  <Paragraph content={description} class='leading-tight' />
+  <Paragraph content={extract} class='leading-tight' />
   <Button as='a' href={slug} class=''>Ver más</Button>
-</section>
+</article>

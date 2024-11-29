@@ -1,11 +1,11 @@
 import type { ButtonVariants } from "@/types/button";
-import type { AstroComponent } from "@/types/component";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 interface ContactInfo {
   type: ButtonVariants
   label: string
   url: string
-  Icon?: AstroComponent
+  Icon?: AstroComponentFactory
 }
 
 export type Contact = ContactInfo[]

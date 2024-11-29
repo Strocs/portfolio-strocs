@@ -6,12 +6,12 @@ import Paragraph from '@/components/ui/Paragraph.astro'
 import Status from '@/components/ui/Status.astro'
 import Title from '@/components/ui/Title.astro'
 import TitleLink from '@/components/ui/TitleLink.astro'
-import ProjectGallery from './ProjectGallery.astro'
-import ProjectTechList from './ProjectTechList.astro'
+import PersonalProjectGallery from './PersonalProjectGallery.astro'
+import PersonalProjectTechList from './PersonalProjectTechList.astro'
 
 interface Props {
   title: string
-  description: string
+  extract: string
   repositoryUrl?: string
   webUrl?: string
   slug?: string
@@ -20,16 +20,8 @@ interface Props {
   images: Array<Record<'src' | 'alt', string>>
 }
 
-const {
-  title,
-  description,
-  repositoryUrl,
-  webUrl,
-  slug,
-  active,
-  images,
-  techs,
-} = Astro.props
+const { title, extract, repositoryUrl, webUrl, slug, active, images, techs } =
+  Astro.props
 ---
 
 <section class='max-w-max space-y-4'>
@@ -55,9 +47,9 @@ const {
     </div>
   </header>
   <div aria-hidden='true' class='ml-indent space-y-6'>
-    <Paragraph content={description} class='' />
-    <ProjectTechList {techs} />
-    <ProjectGallery {images} />
+    <Paragraph content={extract} class='' />
+    <PersonalProjectTechList {techs} />
+    <PersonalProjectGallery {images} />
     {
       slug && (
         <Button as='a' href={slug}>

@@ -1,29 +1,7 @@
 ---
-import type { Project } from '@/interfaces/projects'
-import Indicator from '@/components/ui/Indicator.astro'
-import Paragraph from '@/components/ui/Paragraph.astro'
-import Title from '@/components/ui/Title.astro'
-import Works from './components/Works.astro'
-
-interface Experience {
-  title: string
-  description: string
-  from: string
-  to: string
-  works: Omit<Project, 'images' | 'techs'>[]
-}
-
-const { title, description, from, to, works } = experience
+import Freelance from './components/Freelance.astro'
 ---
 
-<section class='grid max-w-max gap-4'>
-  <header class='flex max-w-[660px] justify-between'>
-    <div aria-hidden='true' class='flex items-center'>
-      <Indicator />
-      <Title variant='lg' as='h2' content={title} />
-    </div>
-    <p class='text-lg text-foreground'>{from} - {to}</p>
-  </header>
-  <Paragraph content={description} />
-  <Works {works} />
+<section>
+  <Freelance />
 </section>
