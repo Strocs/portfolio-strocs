@@ -1,0 +1,21 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+
+interface Props<ListType = {}> {
+  list: ListType[]
+  class?: string
+  Item: AstroComponentFactory
+}
+
+const { list = [{}], class: customClass, Item } = Astro.props
+---
+
+<ul class:list={['flex gap-10', customClass]}>
+  {
+    list.map((item) => (
+      <li class='shrink-0'>
+        <Item {...item} />
+      </li>
+    ))
+  }
+</ul>
