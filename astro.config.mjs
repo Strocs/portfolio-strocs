@@ -1,18 +1,17 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
-import sitemap from '@astrojs/sitemap';
-import react from '@astrojs/react';
-import mdx from '@astrojs/mdx';
+import { defineConfig } from 'astro/config'
+import tailwind from '@astrojs/tailwind'
+import vercel from '@astrojs/vercel'
+import sitemap from '@astrojs/sitemap'
+import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
-  i18n: {
-    defaultLocale: 'es',
-    locales: ['es', 'en'],
-  },
-  integrations: [tailwind(), sitemap(), react(), mdx()],
-  output: 'server',
-  adapter: vercel()
-});
+  integrations: [tailwind(), sitemap(), react()],
+  output: 'static',
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
+})
