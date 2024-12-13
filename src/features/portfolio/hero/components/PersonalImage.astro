@@ -1,13 +1,14 @@
 ---
-import { Image } from 'astro:assets'
+import { Picture } from 'astro:assets'
 import { src, alt } from '../data/personal-info'
 ---
 
-<Image
+<Picture
   {src}
   {alt}
   width={112}
   height={112}
+  formats={['webp', 'avif']}
   loading='eager'
   class='mb-4 ml-3 size-28 rounded-full bg-background/20'
 />

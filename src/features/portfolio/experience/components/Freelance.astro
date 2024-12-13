@@ -1,0 +1,36 @@
+---
+import Indicator from '@/components/ui/Indicator.astro'
+import Paragraph from '@/components/ui/Paragraph.astro'
+import Title from '@/components/ui/Title.astro'
+import List from '@/components/ui/List.astro'
+import JobsCard from './JobsCard.astro'
+import { freelance } from '../data/experience.data'
+import { getCollection } from 'astro:content'
+
+const { title, from, to, description } = freelance
+
+const jobs = await getCollection(
+  'projects',
+  ({ data }) => data.type === 'freelance'
+)
+---
+
+<article class='grid max-w-max gap-4'>
+  <header class='flex max-w-[660px] justify-between'>
+    <div aria-hidden='true' class='flex items-center'>
+      <Indicator />
+      <Title variant='lg' as='h2' content={title} />
+    </div>
+    <p class='text-lg text-foreground'>
+      {from} - {to}
+    </p>
+  </header>
+  <Paragraph content={description} />
+  <section class='grid gap-4'>
+    <header class='ml-indent flex items-center'>
+      <Indicator />
+      <Title content='Trabajos realizados' as='h2' />
+    </header>
+    <List list={jobs} Item={JobsCard} />
+  </section>
+</article>

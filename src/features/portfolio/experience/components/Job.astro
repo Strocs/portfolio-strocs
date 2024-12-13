@@ -1,27 +1,32 @@
 ---
-import Indicator from '@/components/ui/Indicator.astro'
 import Paragraph from '@/components/ui/Paragraph.astro'
+import type { Experience } from '../types/experience'
+import Indicator from '@/components/ui/Indicator.astro'
 import Title from '@/components/ui/Title.astro'
-import List from '@/components/ui/List.astro'
-import JobsCard from './JobsCard.astro'
-import { title, description, from, to, freelanceJobs } from '../data/freelance'
-console.log(freelanceJobs)
+
+interface Props {
+  job: Experience
+}
+
+const { job } = Astro.props
 ---
 
 <article class='grid max-w-max gap-4'>
   <header class='flex max-w-[660px] justify-between'>
     <div aria-hidden='true' class='flex items-center'>
       <Indicator />
-      <Title variant='lg' as='h2' content={title} />
+      <Title variant='lg' as='h2' content={job.title} />
     </div>
-    <p class='text-lg text-foreground'>{from} - {to}</p>
+    <p class='text-lg text-foreground'>
+      {job.from} - {job.to}
+    </p>
   </header>
-  <Paragraph content={description} />
+  <Paragraph content={job.description} />
   <section class='grid gap-4'>
     <header class='ml-indent flex items-center'>
       <Indicator />
       <Title content='Trabajos realizados' as='h2' />
     </header>
-    <List list={freelanceJobs} Item={JobsCard} />
+    <List list={jobs} Item={JobsCard} />
   </section>
 </article>

@@ -1,6 +1,8 @@
 ---
 import type { HTMLTag, Polymorphic } from 'astro/types'
-import type { ButtonVariants, ButtonType } from '@/types/button'
+
+export type ButtonVariants = 'default' | 'lg' | 'square'
+export type ButtonType = 'button' | 'a'
 
 type Props<TagName extends HTMLTag = HTMLTag> = {
   variant?: ButtonVariants

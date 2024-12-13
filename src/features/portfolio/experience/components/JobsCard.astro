@@ -23,11 +23,7 @@ const { title, extract, repositoryUrl, webUrl, active } = data
         <Title as='h3' content={title} />
       </TitleLink>
     </div>
-    <a
-      href={repositoryUrl}
-      target='_blank'
-      aria-label='Repository Link'
-      class='hover:scale-105'>
+    <a href={repositoryUrl} target='_blank' aria-label='Repository Link' class='hover:scale-105'>
       <Github class='size-5 text-foreground' />
     </a>
   </header>

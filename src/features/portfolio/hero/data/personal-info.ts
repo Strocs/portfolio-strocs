@@ -1,4 +1,5 @@
 import type { PersonalInfo } from "../types/personal-info";
+import personalImage from "@/assets/images/personal.jpg";
 
 export const openToWork = true
 const openToWorkLabel = new Map([[true, 'Disponible para trabajar']])
@@ -12,6 +13,6 @@ export const { title, subTitle, OTWLabel, description }: PersonalInfo = {
 }
 
 export const { src, alt } = {
-  src: 'https://pub-c0cf7aa50bf54e858e7672913f398381.r2.dev/personal.jpg',
+  src: personalImage,
   alt: 'Ignacio Molina mirando alegremente de frente en la naturaleza',
 }
