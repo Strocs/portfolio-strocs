@@ -1,9 +1,10 @@
 ---
 title: Festival Frijol Mágico
-date: 2024-10
+type: freelance
+stack: [Typescript, Astro, React, TailwindCSS]
 extract: Desarrollo web para el Festival Frijol Mágico, una plataforma de difusión de ilustradores emergentes en la Región de Coquimbo, organizado por la Asociación Cultural Frijol Mágico.
-repositoryUrl: https://github.com/strocs/arc2023
-webUrl: https://frijolmagico.cl
+github: https://github.com/strocs/arc2023
+liveDemo: https://frijolmagico.cl
 active: true
-techs: [Typescript, Astro, React, TailwindCSS]
+date: 2024-10
 ---
