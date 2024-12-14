@@ -1,2 +1,3 @@
-export const useCMS = false
-export const localContent = './content/projects'
+export const USE_CMS = false
+export const LOCAL_PATH = './content/'
+export const CMS_PATH = ''
