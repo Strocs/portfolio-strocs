@@ -1,6 +1,11 @@
 ---
+import { getCollection } from 'astro:content'
 import Project from './components/Project.astro'
-import { projects } from './data/projects'
+
+export const projects = await getCollection(
+  'projects',
+  ({ data }) => data.type === 'personal'
+)
 ---
 
 <section class='grid gap-24'>

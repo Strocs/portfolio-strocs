@@ -1,9 +1,9 @@
 import { defineCollection } from 'astro:content'
 import { ProjectSchema } from '@/features/content/schemas/project.schema'
-import { loaders } from '@/features/content/adapters/content.adapter'
+import { loaders } from '@/features/content/adapters/loaders.adapter'
 
 const projects = defineCollection({
-  loader: loaders.projects,
+  loader: loaders('projects'),
   schema: ProjectSchema,
 })
 
