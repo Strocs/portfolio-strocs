@@ -10,4 +10,4 @@ const remoteLoader = (content: string) => async () => {
   return { id: '1234' + CMS_URL }
 }
 
-export const loaders = USE_CMS ? remoteLoader : localLoader
+export const projectLoader = USE_CMS ? remoteLoader : localLoader
