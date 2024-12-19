@@ -1,14 +1,10 @@
 ---
 import Paragraph from '@/components/ui/Paragraph.astro'
-import type { Experience } from '../types/experience'
 import Indicator from '@/components/ui/Indicator.astro'
 import Title from '@/components/ui/Title.astro'
+import List from '@/components/ui/List.astro'
 
-interface Props {
-  job: Experience
-}
-
-const { job } = Astro.props
+const { jobs } = Astro.props
 ---
 
 <article class='grid max-w-max gap-4'>

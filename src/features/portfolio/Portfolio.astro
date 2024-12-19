@@ -1,0 +1,24 @@
+---
+import Experience from '@/features/portfolio/experience/Experience.astro'
+import Hero from '@/features/portfolio/hero/Hero.astro'
+import Nav from '@/features/portfolio/nav/Nav.astro'
+import Projects from '@/features/portfolio/projects/Projects.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getI18N } from '@/i18n/index'
+
+const { currentLocale: lang } = Astro
+const { SEO_TITLE } = await getI18N({ lang })
+---
+
+<Layout title={SEO_TITLE}>
+  <div aria-hidden='true' class='grid grid-cols-[630px_auto]'>
+    <aside class='w-full'>
+      <Nav />
+    </aside>
+    <main class='grid gap-52'>
+      <Hero />
+      <Experience />
+      <Projects />
+    </main>
+  </div>
+</Layout>

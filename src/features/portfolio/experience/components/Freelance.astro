@@ -4,33 +4,34 @@ import Paragraph from '@/components/ui/Paragraph.astro'
 import Title from '@/components/ui/Title.astro'
 import List from '@/components/ui/List.astro'
 import JobsCard from './JobsCard.astro'
-import { freelance } from '../data/experience.data'
-import { getCollection } from 'astro:content'
+import { getProjects } from '@/content'
+import { getI18N } from '@/i18n'
 
-const { title, from, to, description } = freelance
+const { currentLocale: lang } = Astro
+const { PORTFOLIO } = await getI18N({ lang })
+const JOBS = await getProjects({ type: 'freelance', lang })
 
-const jobs = await getCollection(
-  'projects',
-  ({ data }) => data.type === 'freelance'
-)
+const { WORKS_DONE, FREELANCE } = PORTFOLIO?.EXPERIENCE
+
+// TODO: Make a generic Job component
 ---
 
 <article class='grid max-w-max gap-4'>
   <header class='flex max-w-[660px] justify-between'>
     <div aria-hidden='true' class='flex items-center'>
       <Indicator />
-      <Title variant='lg' as='h2' content={title} />
+      <Title variant='lg' as='h2' content={FREELANCE?.TITLE ?? ''} />
     </div>
     <p class='text-lg text-foreground'>
-      {from} - {to}
+      {FREELANCE?.FROM} - {FREELANCE?.TO}
     </p>
   </header>
-  <Paragraph content={description} />
-  <section class='grid gap-4'>
-    <header class='ml-indent flex items-center'>
+  <Paragraph content={FREELANCE?.DESCRIPTION ?? ''} />
+  <section class='ml-indent grid gap-4'>
+    <header class='flex items-center'>
       <Indicator />
-      <Title content='Trabajos realizados' as='h2' />
+      <Title content={WORKS_DONE} as='h2' />
     </header>
-    <List list={jobs} Item={JobsCard} />
+    <List list={JOBS} Item={JobsCard} />
   </section>
 </article>

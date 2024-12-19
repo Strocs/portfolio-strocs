@@ -9,11 +9,15 @@ import Title from '@/components/ui/Title.astro'
 import TitleLink from '@/components/ui/TitleLink.astro'
 import ProjectGallery from './ProjectGallery.astro'
 import ProjectTechList from './ProjectTechList.astro'
+import { getI18N } from '@/i18n'
 
 type Props = CollectionEntry<'projects'>
 
-const { data, slug } = Astro.props
-const { title, extract, repositoryUrl, webUrl, active, images, techs } = data
+const { currentLocale: lang } = Astro
+const { SEE_MORE_BTN } = await getI18N({ lang })
+
+const { data, id } = Astro.props
+const { title, extract, github, liveDemo, active, images, stack } = data
 ---
 
 <article class='max-w-max space-y-4'>
@@ -22,32 +26,31 @@ const { title, extract, repositoryUrl, webUrl, active, images, techs } = data
     <div class='flex size-fit items-center gap-4'>
       <div class='flex items-center gap-2'>
         <Status {active} />
-        <TitleLink href={webUrl}>
+        <TitleLink href={liveDemo}>
           <Title as='h3' variant='lg' content={title} />
         </TitleLink>
       </div>
       {
-        repositoryUrl && (
-          <a
-            href={repositoryUrl}
-            aria-label='Repository Link'
-            class='hover:scale-105'>
+        github && (
+          <a href={github} aria-label='Repository Link' class='hover:scale-105'>
             <Github class='size-5 text-foreground' />
           </a>
         )
       }
     </div>
   </header>
-  <div aria-hidden='true' class='ml-indent space-y-6'>
+  <div aria-hidden='true' class='space-y-6'>
     <Paragraph content={extract} class='' />
-    <ProjectTechList {techs} />
-    <ProjectGallery {images} />
-    {
-      slug && (
-        <Button as='a' href={slug}>
-          Ver más
-        </Button>
-      )
-    }
+    <ProjectTechList {stack} />
+    <div class='ml-indent space-y-6'>
+      {images && <ProjectGallery {images} />}
+      {
+        id && (
+          <Button as='a' href={'/blog/' + id}>
+            {SEE_MORE_BTN}
+          </Button>
+        )
+      }
+    </div>
   </div>
 </article>

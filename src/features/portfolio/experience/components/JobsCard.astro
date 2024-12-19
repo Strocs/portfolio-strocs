@@ -7,11 +7,15 @@ import Status from '@/components/ui/Status.astro'
 import Github from '@/components/icons/Github.astro'
 import Paragraph from '@/components/ui/Paragraph.astro'
 import Button from '@/components/ui/Button.astro'
+import { getI18N } from '@/i18n'
 
 type Props = CollectionEntry<'projects'>
 
-const { data, slug } = Astro.props
-const { title, extract, repositoryUrl, webUrl, active } = data
+const { currentLocale: lang } = Astro
+const { SEE_MORE_BTN } = await getI18N({ lang })
+
+const { data, id } = Astro.props
+const { title, extract, github, liveDemo, active } = data
 ---
 
 <article
@@ -19,14 +23,28 @@ const { title, extract, repositoryUrl, webUrl, active } = data
   <header class='flex size-fit items-center gap-4'>
     <div class='flex items-center gap-2'>
       <Status {active} />
-      <TitleLink target='_blank' href={webUrl}>
-        <Title as='h3' content={title} />
-      </TitleLink>
+      {
+        active ? (
+          <TitleLink target='_blank' href={liveDemo}>
+            <Title as='h3' content={title} />
+          </TitleLink>
+        ) : (
+          <Title as='h3' content={title} />
+        )
+      }
     </div>
-    <a href={repositoryUrl} target='_blank' aria-label='Repository Link' class='hover:scale-105'>
-      <Github class='size-5 text-foreground' />
-    </a>
+    {
+      github && (
+        <a
+          href={github}
+          target='_blank'
+          aria-label='Repository Link'
+          class='hover:scale-105'>
+          <Github class='size-5 text-foreground' />
+        </a>
+      )
+    }
   </header>
   <Paragraph content={extract} class='leading-tight' />
-  <Button as='a' href={slug} class=''>Ver más</Button>
+  <Button as='a' href={'/blog/' + id} class=''>{SEE_MORE_BTN}</Button>
 </article>

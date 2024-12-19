@@ -1,13 +1,11 @@
 ---
-import { getCollection } from 'astro:content'
 import Project from './components/Project.astro'
+import { getProjects } from '@/content'
 
-export const projects = await getCollection(
-  'projects',
-  ({ data }) => data.type === 'personal'
-)
+const { currentLocale: lang } = Astro
+export const PROJECTS = await getProjects({ type: 'personal' })
 ---
 
 <section class='grid gap-24'>
-  {projects.map((project) => <Project {...project} />)}
+  {PROJECTS.map((project) => <Project {...project} />)}
 </section>

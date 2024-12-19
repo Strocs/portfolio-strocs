@@ -4,26 +4,30 @@ import Paragraph from '@/components/ui/Paragraph.astro'
 import Badge from '@/components/ui/Badge.astro'
 import PersonalImage from './components/PersonalImage.astro'
 import ContactLinks from './components/ContactLinks.astro'
-import { title, subTitle, OTWLabel, description } from './data/personal-info'
+import { getI18N } from '@/i18n'
+import { IS_OTW } from '@/config/personal.config'
+
+const { currentLocale: lang } = Astro
+const { PORTFOLIO, OTW } = await getI18N({ lang })
 ---
 
 <div aria-hidden='true' class='-mb-52 -mt-10 grid min-h-screen items-center'>
   <header class='max-w-max'>
     <PersonalImage />
     <div aria-hidden='true' class='relative mb-6'>
-      <Title as='h1' content={title} variant='xl' class='mb-2' />
-      <Title as='h2' content={subTitle} />
+      <Title as='h1' content={PORTFOLIO.HERO.TITLE} variant='xl' class='mb-2' />
+      <Title as='h2' content={PORTFOLIO.HERO.SUBTITLE} />
       {
-        OTWLabel && (
+        IS_OTW && (
           <Badge
-            label={OTWLabel}
+            label={OTW}
             variant='lg'
             class='shadow-light absolute right-0 top-1/4 rotate-12'
           />
         )
       }
     </div>
-    <Paragraph variant='xl' content={description} />
+    <Paragraph variant='xl' content={PORTFOLIO.HERO.DESCRIPTION} />
     <ContactLinks />
   </header>
 </div>

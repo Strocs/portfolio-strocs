@@ -1,4 +1,4 @@
-import type { ContactInfo } from "./contact";
+import type { ContactInfo } from '../../../../types/contact'
 
 export interface PersonalInfo {
   title: string

@@ -1,6 +1,9 @@
 ---
 import Button from '@/components/ui/Button.astro'
-import { contact } from '../data/contact'
+import { getContact } from '@/data/contact.data'
+
+const { currentLocale: lang } = Astro
+const contact = await getContact({ lang })
 ---
 
 <ul class='mt-10 flex gap-4'>

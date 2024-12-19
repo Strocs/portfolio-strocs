@@ -1,7 +1,8 @@
 ---
 interface Props {
-  images: Array<Record<'src' | 'alt', string>>
+  images?: Array<Record<'src' | 'alt', string>>
 }
+
 const { images = [] } = Astro.props
 ---
 

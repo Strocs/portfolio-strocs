@@ -1,11 +1,13 @@
 ---
 import { Picture } from 'astro:assets'
-import { src, alt } from '../data/personal-info'
+import personalImg from '@/assets/images/personal.jpg'
+
+const alt = ''
 ---
 
 <Picture
-  {src}
   {alt}
+  src={personalImg}
   width={112}
   height={112}
   formats={['webp', 'avif']}
