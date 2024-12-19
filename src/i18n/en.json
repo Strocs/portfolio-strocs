@@ -1,0 +1,25 @@
+{
+  "SEO_TITLE": "Ignacio Molina - Portfolio",
+  "SEO_DESCRIPTION": "Portfolio de Ignacio Molina, desarrollador web full stack",
+  "PERSONAL_IMAGE_ALT": "Ignacio Molina mirando alegremente de frente rodeado de la naturaleza",
+  "RESUME": "Resume",
+  "OTW": "Open to work",
+  "SEE_MORE_BTN": "See more",
+  "PORTFOLIO": {
+    "HERO": {
+      "TITLE": "Hi! <br> I'm <strong>Ignacio Molina</strong>",
+      "SUBTITLE": "Desarrollador Full Stack enfocado en el Frontend",
+      "DESCRIPTION": "+2 años de experiencia creando sitios web personalizados como freelance. Mi formación como Arquitecto me entregó la capacidad de analizar proyectos desde una perspectiva estructural, asegurando gran atención al detalle y conciencia del proceso.",
+      "IMAGE_ALT": "Ignacio Molina mirando alegremente de frente rodeado de la naturaleza"
+    },
+    "EXPERIENCE": {
+      "WORKS_DONE": "Trabajos realizados",
+      "FREELANCE": {
+        "TITLE": "Desarrollador Freelance",
+        "DESCRIPTION": "Desarrollo sitios web con alto rendimiento, utilizando Astro como framework principal, me gusta comprender a profundidad las características del producto de los clientes para crear un sitio web que encaje a la perfección con sus necesidades.",
+        "FROM": "2022",
+        "TO": "Actualidad"
+      }
+    }
+  }
+}

@@ -8,7 +8,12 @@ import react from '@astrojs/react'
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), sitemap(), react()],
-  output: 'static',
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+  },
+  site: 'https://strocs.dev/',
+  output: 'server',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
