@@ -1,5 +1,5 @@
 <svg
-  {...Astro.props}
+   
   width="417"
   height="417"
   viewBox="0 0 417 417"
