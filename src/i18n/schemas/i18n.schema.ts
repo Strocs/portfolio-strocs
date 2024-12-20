@@ -22,8 +22,17 @@ export const i18nSchema = z.object({
       IMAGE_ALT: z.string(),
     }),
     EXPERIENCE: z.object({
+      TITLE: z.string(),
       WORKS_DONE: z.string(),
       FREELANCE: jobsSchema.optional(),
+    }),
+    PROJECTS: z.object({
+      TITLE: z.string(),
+    }),
+    ABOUT: z.object({
+      TITLE: z.string(),
+      DESCRIPTION: z.array(z.string()),
+      SKILLS_TITLE: z.string(),
     }),
   }),
 })

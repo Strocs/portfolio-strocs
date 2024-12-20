@@ -7,7 +7,6 @@ interface GetProjectProps {
 
 export const getProjects = async ({ type, lang }: GetProjectProps) => {
   return await getCollection('projects', ({ data }) => {
-    console.log('Called from collection getter ' + lang)
     return data.type === type
   })
 }

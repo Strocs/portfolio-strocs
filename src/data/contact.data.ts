@@ -1,6 +1,6 @@
 import type { Contact } from '@/types/contact'
-import Mail from '@/components/icons/Mail.astro'
-import PhoneIcon from '@/components/icons/PhoneIcon.astro'
+import Mail from '@/assets/icons/mail.svg'
+import PhoneIcon from '@/assets/icons/phoneIcon.svg'
 import { getI18N } from '@/i18n'
 
 export const getContact = async ({

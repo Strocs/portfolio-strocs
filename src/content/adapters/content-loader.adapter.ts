@@ -1,8 +1,10 @@
-import { USE_CMS, LOCAL_PATH, CMS_PATH } from '@/config/content'
+import { USE_CMS, LOCAL_PATH, CMS_PATH } from '@/config/content-source.config'
 import { glob } from 'astro/loaders'
 
-const localLoader = (content: string) =>
-  glob({ pattern: '*.md', base: LOCAL_PATH + content })
+const localLoader = (content: string) => {
+  console.log('Called from localLoader')
+  return glob({ pattern: '*.md', base: LOCAL_PATH + content })
+}
 
 const remoteLoader = (content: string) => async () => {
   // implement this to connect with a headless cms

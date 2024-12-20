@@ -1,7 +1,7 @@
 import { defineCollection } from 'astro:content'
 import { glob } from 'astro/loaders'
 import { ProjectSchema } from '@/content/schemas/project.schema'
-import { projectLoader } from '@/content/adapters/loader.adapter'
+import { projectLoader } from '@/content/adapters/content-loader.adapter'
 import { i18nSchema } from '@/i18n/schemas/i18n.schema'
 
 const projects = defineCollection({
