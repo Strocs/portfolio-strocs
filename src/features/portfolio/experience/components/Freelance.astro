@@ -32,6 +32,16 @@ const { WORKS_DONE, FREELANCE } = PORTFOLIO?.EXPERIENCE
       <Indicator />
       <Title content={WORKS_DONE} as='h2' />
     </header>
-    <List list={JOBS} Item={JobsCard} />
+    <List list={JOBS} Item={JobsCard} class='jobs-list' />
   </section>
 </article>
+
+<script>
+  import { useHorizontalScroll } from '@/utils/animations/useHorizontalScroll'
+
+  useHorizontalScroll({
+    container: '.jobs-list',
+    scrub: 0.5,
+    x: '500',
+  })
+</script>
