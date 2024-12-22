@@ -16,7 +16,7 @@ const { WORKS_DONE, FREELANCE } = PORTFOLIO?.EXPERIENCE
 // TODO: Make a generic Job component
 ---
 
-<article class='grid max-w-max gap-4'>
+<article class='animation-trigger grid max-w-max gap-4'>
   <header class='flex max-w-[660px] justify-between'>
     <div aria-hidden='true' class='flex items-center'>
       <Indicator />
@@ -41,7 +41,7 @@ const { WORKS_DONE, FREELANCE } = PORTFOLIO?.EXPERIENCE
 
   useHorizontalScroll({
     container: '.jobs-list',
+    trigger: '.animation-trigger',
     scrub: 0.5,
-    x: '500',
   })
 </script>

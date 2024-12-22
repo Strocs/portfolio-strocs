@@ -18,17 +18,15 @@ interface HorizontalScrollOptions {
 export const useHorizontalScroll = ({
   container,
   trigger = container,
-  start = 'top bottom',
+  start = 'top center',
   scrub = true,
-  x = '100%',
   swipeEnabled = true,
 }: HorizontalScrollOptions) => {
   const element = document.querySelector(container) as HTMLElement
   if (!element) return
 
-  // Scroll animation
   const scrollAnimation = gsap.to(element, {
-    x: `-=${x}`,
+    x: `-=500`,
     ease: 'none',
     scrollTrigger: {
       trigger,
@@ -40,24 +38,15 @@ export const useHorizontalScroll = ({
 
   if (swipeEnabled) {
     // Swipe/Drag functionality
+    const bounds = {
+      minX: -(element.offsetWidth - (window.innerWidth - element.offsetLeft)),
+      maxX: 0,
+    }
     Draggable.create(element, {
       type: 'x',
       inertia: true,
-      bounds: {
-        minX: -(element.scrollWidth - window.innerWidth),
-        maxX: 0,
-      },
-      edgeResistance: 0.65,
-      onDragEnd: function () {
-        // // Snap to nearest card
-        // const x = this.endX
-        // const snapX = Math.round(x / cardWidth) * cardWidth
-        // gsap.to(element, {
-        //   x: snapX,
-        //   duration: 0.3,
-        //   ease: 'power2.out',
-        // })
-      },
+      bounds,
+      edgeResistance: 0,
     })
   }
 
