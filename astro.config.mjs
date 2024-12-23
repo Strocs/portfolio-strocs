@@ -16,7 +16,7 @@ export default defineConfig({
     locales: ['es', 'en'],
   },
   site: 'https://strocs.dev/',
-  output: 'server',
+  output: 'static',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
