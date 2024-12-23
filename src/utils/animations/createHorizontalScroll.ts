@@ -16,7 +16,7 @@ interface HorizontalScrollOptions {
 export const createHorizontalScroll = ({
   container,
   trigger = container,
-  start = 'center bottom',
+  start = 'top bottom',
   scrub = true,
   x = 500,
   swipeEnabled = true,
@@ -24,20 +24,35 @@ export const createHorizontalScroll = ({
   const element = document.querySelector(container) as HTMLElement
   if (!element) return
 
+  const gap = +getComputedStyle(element).gap.replace('px', '')
   let rafId: number | null = null
   let draggableInstance: Draggable | null = null
   let scrollOffset = 0
   let lastProgress = 0
   let isDragging = false
 
-  // Throttled position update
+  // Calculate bounds
+  const bounds = {
+    minX:
+      -(element.offsetWidth - (window.innerWidth - element.offsetLeft)) - gap,
+    maxX: 0,
+  }
+
+  // Throttled position update with bounds check
   const updatePosition = (progress: number) => {
     if (Math.abs(progress - lastProgress) < 0.001 || isDragging) return
 
     lastProgress = progress
+    const newPosition = scrollOffset - x * progress
+
+    //Apply bounds to scroll position
+    const boundedPosition = Math.max(
+      bounds.minX,
+      Math.min(bounds.maxX, newPosition)
+    )
 
     gsap.set(element, {
-      x: scrollOffset - x * progress,
+      x: boundedPosition,
       force3D: true,
     })
   }
@@ -62,12 +77,8 @@ export const createHorizontalScroll = ({
   if (swipeEnabled) {
     draggableInstance = Draggable.create(element, {
       type: 'x',
-      inertia: true,
-      bounds: {
-        minX: -(element.offsetWidth - (window.innerWidth - element.offsetLeft)),
-        maxX: 0,
-      },
-      edgeResistance: 0.5,
+      bounds,
+      edgeResistance: 1,
       dragResistance: 0.1,
       onDragStart: () => {
         isDragging = true
