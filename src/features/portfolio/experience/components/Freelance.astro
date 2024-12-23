@@ -37,11 +37,9 @@ const { WORKS_DONE, FREELANCE } = PORTFOLIO?.EXPERIENCE
 </article>
 
 <script>
-  import { useHorizontalScroll } from '@/utils/animations/useHorizontalScroll'
+  import { createHorizontalScroll } from '@/utils/animations/createHorizontalScroll'
 
-  useHorizontalScroll({
+  createHorizontalScroll({
     container: '.jobs-list',
-    trigger: '.animation-trigger',
-    scrub: 0.5,
   })
 </script>
