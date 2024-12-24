@@ -34,7 +34,10 @@ export const createHorizontalScroll = ({
   // Calculate bounds
   const bounds = {
     minX:
-      -(element.offsetWidth - (window.innerWidth - element.offsetLeft)) - gap,
+      -(
+        element.offsetWidth -
+        (window.innerWidth - element.getBoundingClientRect().x)
+      ) - gap,
     maxX: 0,
   }
 
