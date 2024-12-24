@@ -1,9 +1,10 @@
 ---
-import Experience from '@/features/portfolio/experience/Experience.astro'
-import Hero from '@/features/portfolio/hero/Hero.astro'
-import Nav from '@/features/portfolio/nav/Nav.astro'
-import Projects from '@/features/portfolio/projects/Projects.astro'
 import Layout from '@/layouts/Layout.astro'
+import Nav from '@/features/portfolio/nav/Nav.astro'
+import Hero from '@/features/portfolio/hero/Hero.astro'
+import Experience from '@/features/portfolio/experience/Experience.astro'
+import Projects from '@/features/portfolio/projects/Projects.astro'
+import About from '@/features/portfolio/about/About.astro'
 import { getI18N } from '@/i18n/index'
 
 const { currentLocale: lang } = Astro
@@ -11,7 +12,12 @@ const { SEO_TITLE, SEO_DESCRIPTION } = await getI18N({ lang })
 ---
 
 <Layout title={SEO_TITLE} description={SEO_DESCRIPTION}>
-  <div aria-hidden='true' class='grid grid-cols-[630px_auto]'>
+  <a
+    href='/blog'
+    id='go-to-blog'
+    class='fixed bottom-0 right-0 top-0 z-50 m-auto h-[98vh] w-16 translate-x-10 transform-gpu rounded-l-3xl bg-background py-16 opacity-50 shadow-[0_0_0] shadow-foreground ring-1 ring-foreground/20 transition duration-200 hover:translate-x-0 hover:opacity-100'>
+  </a>
+  <div aria-hidden='true' class='grid grid-cols-[628px_auto]'>
     <aside class='w-full'>
       <Nav />
     </aside>
@@ -19,6 +25,8 @@ const { SEO_TITLE, SEO_DESCRIPTION } = await getI18N({ lang })
       <Hero />
       <Experience />
       <Projects />
+      <About />
     </main>
   </div>
+  <footer class='h-96'></footer>
 </Layout>
