@@ -2,8 +2,9 @@
 import Project from './components/Project.astro'
 import { getProjects } from '@/content'
 
-const { currentLocale: lang } = Astro
-export const PROJECTS = await getProjects({ type: 'personal', lang })
+export const PROJECTS = await getProjects({
+  type: 'personal',
+})
 ---
 
 <section class='grid gap-24'>
