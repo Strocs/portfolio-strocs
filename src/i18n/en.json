@@ -5,6 +5,11 @@
   "RESUME": "Resume",
   "OTW": "Open to work",
   "SEE_MORE_BTN": "See more",
+  "NAV": {
+    "EXPERIENCE": "Experience",
+    "PROJECTS": "Projects",
+    "ABOUT": "About me"
+  },
   "PORTFOLIO": {
     "HERO": {
       "TITLE": "Hi! <br> I'm <strong>Ignacio Molina</strong>",
@@ -13,7 +18,6 @@
       "IMAGE_ALT": "Ignacio Molina mirando alegremente de frente rodeado de la naturaleza"
     },
     "EXPERIENCE": {
-      "TITLE": "Experience",
       "WORKS_DONE": "Trabajos realizados",
       "FREELANCE": {
         "TITLE": "Desarrollador Freelance",
@@ -22,17 +26,14 @@
         "TO": "Current"
       }
     },
-    "PROJECTS": {
-      "TITLE": "Projects"
-    },
+    "PROJECTS": {},
     "ABOUT": {
-      "TITLE": "About me",
+      "TITLE": "From physical spaces to digital solutions",
       "DESCRIPTION": [
         "Hace dos años nació mi interés por la programación y el desarrollo de software. En ese momento, mientras cursaba la fase de titulación en Arquitectura, me di cuenta que mi verdadera pasión era ser desarrollador.",
         "Comencé mi aprendizaje de forma autodidacta, estudiando HTML y CSS con profesores como Midudev y aprovechando los Platzi Day. Luego, adquirí cursos de JavaScript Moderno, React, Next.js y Node.js del profesor Fernando Herrera. Paralelamente, investigaba temas como estrategias de renderizado, bases de datos, arquitectura de software, buenas prácticas y más.",
         "Actualmente, trabajo como desarrollador freelance utilizando Astro y centrándome en el rendimiento de mis proyectos. Como objetivo a futuro, espero seguir mejorando y aprendiendo cada día más."
-      ],
-      "SKILLS_TITLE": "Favorite Stack"
+      ]
     }
   }
 }

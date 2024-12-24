@@ -14,6 +14,11 @@ export const i18nSchema = z.object({
   RESUME: z.string(),
   OTW: z.string(),
   SEE_MORE_BTN: z.string(),
+  NAV: z.object({
+    EXPERIENCE: z.string(),
+    PROJECTS: z.string(),
+    ABOUT: z.string(),
+  }),
   PORTFOLIO: z.object({
     HERO: z.object({
       TITLE: z.string(),
@@ -22,17 +27,13 @@ export const i18nSchema = z.object({
       IMAGE_ALT: z.string(),
     }),
     EXPERIENCE: z.object({
-      TITLE: z.string(),
       WORKS_DONE: z.string(),
       FREELANCE: jobsSchema.optional(),
     }),
-    PROJECTS: z.object({
-      TITLE: z.string(),
-    }),
+    PROJECTS: z.object({}),
     ABOUT: z.object({
       TITLE: z.string(),
       DESCRIPTION: z.array(z.string()),
-      SKILLS_TITLE: z.string(),
     }),
   }),
 })
