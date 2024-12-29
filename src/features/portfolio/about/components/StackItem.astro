@@ -1,0 +1,12 @@
+---
+interface Props {
+  name: string
+  icon: string
+}
+
+const { name, icon } = Astro.props
+---
+
+<div class='h-10 w-fit bg-red-200 text-background'>
+  <p>{name}</p>
+</div>

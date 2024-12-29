@@ -1,0 +1,75 @@
+---
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+
+interface Props<ListType = {}> {
+  list: ListType[]
+  Item: AstroComponentFactory
+  mode?: 'vertical' | 'landscape'
+  wrapperClass?: string
+  listClass?: string
+  itemClass?: string
+  delay?: number
+  duration?: number
+  direction?: 'reverse' | 'alternate' | 'alternate-reverse' | 'normal'
+  pauseOnHover?: boolean
+}
+
+const {
+  list,
+  Item,
+  mode = 'landscape',
+  wrapperClass = '',
+  listClass = '',
+  itemClass = '',
+  delay = 0,
+  duration = 10,
+  direction = 'normal',
+  pauseOnHover = false,
+} = Astro.props
+---
+
+<div aria-hidden='true' class:list={[wrapperClass, 'size-fit overflow-hidden']}>
+  <ul
+    class:list={[
+      listClass,
+      'flex [mask-image:linear-gradient(to_left,rgb(0_0_0/100%)60%,transparent)]',
+      mode === 'vertical' && 'flex-col',
+      pauseOnHover &&
+        'hover:[animation-play-state:paused] group-hover:[animation-play-state:paused]',
+    ]}>
+    {
+      list.map((item) => (
+        <li class:list={[itemClass, 'shrink-0']}>
+          <Item {...item} />
+        </li>
+      ))
+    }
+    {
+      list.map((item) => (
+        <li class:list={[itemClass, 'shrink-0']}>
+          <slot {...item} />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style define:vars={{ delay, duration, direction }}>
+  @keyframes autoSlide {
+    from: {
+      transform: translateX(0);
+    }
+    to: {
+      transform: translateX(calc((-128px - 8px) * 4));
+    }
+  }
+
+  .card-slides {
+    animation-name: autoSlide;
+    animation-timing-function: linear();
+    animation-iteration-count: infinite;
+    animation-direction: var(--direction);
+    animation-delay: var(--delay);
+    animation-duration: var(--duration);
+  }
+</style>
