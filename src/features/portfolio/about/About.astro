@@ -4,8 +4,6 @@ import Paragraph from '@/components/ui/Paragraph.astro'
 import Title from '@/components/ui/Title.astro'
 import { getI18N } from '@/i18n'
 import ContactLinks from '../hero/components/ContactLinks.astro'
-import StackSlides from './components/StackSlides.astro'
-import StackItem from './components/StackItem.astro'
 
 const { currentLocale: lang } = Astro
 const { PORTFOLIO } = await getI18N({ lang })
@@ -26,10 +24,10 @@ const stacks = [
   { tech: 'Turso', icon: '' },
   { tech: 'SQLite', icon: '' },
   { tech: 'Google Cloud Platform', icon: '' },
+  { tech: 'Vercel', icon: '' },
   { tech: 'Java', icon: '' },
   { tech: 'Python', icon: '' },
   { tech: 'Lua', icon: '' },
-  { tech: '', icon: '' },
 ]
 ---
 
@@ -42,9 +40,6 @@ const stacks = [
     <Paragraph content={ABOUT?.DESCRIPTION ?? ''} />
     <ContactLinks />
   </article>
-  <aside class=''>
-    <StackSlides list={stacks} Item={StackItem} mode='vertical' />
-  </aside>
 </section>
 
 <style></style>
