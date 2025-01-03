@@ -1,0 +1,14 @@
+---
+interface Props {
+  tech: string
+  Icon: any
+}
+
+const { tech = '', Icon } = Astro.props
+---
+
+<div class='text-background'>
+  <Icon
+    class='size-12 opacity-25 grayscale transition-[opacity,filter] duration-150 hover:opacity-100 hover:grayscale-0'
+  />
+</div>

@@ -8,6 +8,7 @@ interface Props<ListType = {}> {
   wrapperClass?: string
   listClass?: string
   itemClass?: string
+  gap?: `${number}px` | `${number}rem`
   delay?: number
   duration?: number
   direction?: 'reverse' | 'alternate' | 'alternate-reverse' | 'normal'
@@ -19,6 +20,7 @@ const {
   Item,
   mode = 'landscape',
   wrapperClass = '',
+  gap = '8px',
   listClass = '',
   itemClass = '',
   delay = 0,
@@ -26,13 +28,18 @@ const {
   direction = 'normal',
   pauseOnHover = false,
 } = Astro.props
+
+const itemsQuantity = list.length
+const cssDuration = `${duration}s`
+const cssDelay = `${delay}s`
 ---
 
-<div aria-hidden='true' class:list={[wrapperClass, 'size-fit overflow-hidden']}>
+<div aria-hidden='true' class:list={[wrapperClass, 'w-fit overflow-hidden']}>
   <ul
+    style={`gap: ${gap}`}
     class:list={[
       listClass,
-      'flex [mask-image:linear-gradient(to_left,rgb(0_0_0/100%)60%,transparent)]',
+      'card-slides flex items-center',
       mode === 'vertical' && 'flex-col',
       pauseOnHover &&
         'hover:[animation-play-state:paused] group-hover:[animation-play-state:paused]',
@@ -47,29 +54,29 @@ const {
     {
       list.map((item) => (
         <li class:list={[itemClass, 'shrink-0']}>
-          <slot {...item} />
+          <Item {...item} />
         </li>
       ))
     }
   </ul>
 </div>
 
-<style define:vars={{ delay, duration, direction }}>
+<style define:vars={{ cssDelay, cssDuration, direction, itemsQuantity, gap }}>
   @keyframes autoSlide {
-    from: {
+    from {
       transform: translateX(0);
     }
-    to: {
-      transform: translateX(calc((-128px - 8px) * 4));
+    to {
+      transform: translateX(calc((-48px - var(--gap)) * var(--itemsQuantity)));
     }
   }
 
   .card-slides {
     animation-name: autoSlide;
-    animation-timing-function: linear();
+    animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: var(--direction);
-    animation-delay: var(--delay);
-    animation-duration: var(--duration);
+    animation-delay: var(--cssDelay);
+    animation-duration: var(--cssDuration);
   }
 </style>

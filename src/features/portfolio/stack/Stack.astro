@@ -1,0 +1,47 @@
+---
+import AutoSlides from '@/components/AutoSlides.astro'
+import StackItem from './components/StackItem.astro'
+
+const icons = import.meta.glob('../../../assets/icons/stack/*', { eager: true })
+
+const logos = Object.values(icons).map((icon) => {
+  const name = icon.default.src.match(/(?!=\/)([a-zA-Z0-9]*)(?=\.svg)/g)[0]
+  return {
+    ...icon,
+    name,
+  }
+})
+
+const getIconByName = (name: string) => {
+  return logos.find((logo) => logo.name.includes(name)).default
+}
+
+const stack = [
+  { tech: 'HTML', Icon: getIconByName('html') },
+  { tech: 'CSS', Icon: getIconByName('css') },
+  { tech: 'Javascript', Icon: getIconByName('javascript') },
+  { tech: 'Typescript', Icon: getIconByName('javascript') },
+  { tech: 'Astro', Icon: getIconByName('astro') },
+  { tech: 'React', Icon: getIconByName('react') },
+  { tech: 'Node.js', Icon: getIconByName('node') },
+  { tech: 'Next.js', Icon: getIconByName('nextjs') },
+  { tech: 'TailwindCSS', Icon: getIconByName('tailwind') },
+  { tech: 'MongoDB', Icon: getIconByName('javascript') },
+  { tech: 'Firebase', Icon: getIconByName('firebase') },
+  { tech: 'Turso', Icon: getIconByName('javascript') },
+  { tech: 'SQLite', Icon: getIconByName('javascript') },
+  { tech: 'Google Cloud Platform', Icon: getIconByName('javascript') },
+  { tech: 'Vercel', Icon: getIconByName('vercel') },
+  { tech: 'Java', Icon: getIconByName('javascript') },
+  { tech: 'Python', Icon: getIconByName('javascript') },
+  { tech: 'Lua', Icon: getIconByName('javascript') },
+]
+---
+
+<AutoSlides
+  list={stack}
+  Item={StackItem}
+  wrapperClass='absolute mt-60'
+  pauseOnHover
+  gap='1rem'
+/>

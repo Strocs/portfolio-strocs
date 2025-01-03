@@ -2,33 +2,12 @@
 import Indicator from '@/components/ui/Indicator.astro'
 import Paragraph from '@/components/ui/Paragraph.astro'
 import Title from '@/components/ui/Title.astro'
-import { getI18N } from '@/i18n'
 import ContactLinks from '../hero/components/ContactLinks.astro'
+import { getI18N } from '@/i18n'
 
 const { currentLocale: lang } = Astro
 const { PORTFOLIO } = await getI18N({ lang })
 const { ABOUT } = PORTFOLIO
-
-const stacks = [
-  { tech: 'HTML', icon: '' },
-  { tech: 'CSS', icon: '' },
-  { tech: 'Javascript', icon: '' },
-  { tech: 'Typescript', icon: '' },
-  { tech: 'Astro', icon: '' },
-  { tech: 'React', icon: '' },
-  { tech: 'Node.js', icon: '' },
-  { tech: 'Next.js', icon: '' },
-  { tech: 'TailwindCSS', icon: '' },
-  { tech: 'MongoDB', icon: '' },
-  { tech: 'Firebase', icon: '' },
-  { tech: 'Turso', icon: '' },
-  { tech: 'SQLite', icon: '' },
-  { tech: 'Google Cloud Platform', icon: '' },
-  { tech: 'Vercel', icon: '' },
-  { tech: 'Java', icon: '' },
-  { tech: 'Python', icon: '' },
-  { tech: 'Lua', icon: '' },
-]
 ---
 
 <section class='flex gap-4'>
@@ -41,5 +20,3 @@ const stacks = [
     <ContactLinks />
   </article>
 </section>
-
-<style></style>

@@ -2,30 +2,16 @@
 import Title from '@/components/ui/Title.astro'
 import Paragraph from '@/components/ui/Paragraph.astro'
 import Badge from '@/components/ui/Badge.astro'
-import AutoSlides from '@/components/AutoSlides.astro'
 import PersonalImage from './components/PersonalImage.astro'
 import ContactLinks from './components/ContactLinks.astro'
-import StackItem from './components/StackItem.astro'
 import { getI18N } from '@/i18n'
 import { IS_OTW } from '@/config/personal.config'
 
 const { currentLocale: lang } = Astro
 const { PORTFOLIO, OTW } = await getI18N({ lang })
-
-const stack = [
-  {
-    name: 'Javascript',
-    icon: '',
-  },
-  {
-    name: 'Typescript',
-    icon: '',
-  },
-]
 ---
 
 <div aria-hidden='true' class='-mb-52 -mt-10 grid min-h-screen items-center'>
-  <AutoSlides Item={StackItem} />
   <header class='max-w-max'>
     <PersonalImage />
     <div aria-hidden='true' class='relative mb-6'>
