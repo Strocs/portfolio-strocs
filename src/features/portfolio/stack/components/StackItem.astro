@@ -1,10 +1,13 @@
 ---
+import { getIconByName } from '../utils/getIconByName'
+
 interface Props {
   tech: string
-  Icon: any
 }
 
-const { tech = '', Icon } = Astro.props
+const { tech = '' } = Astro.props
+
+const Icon = getIconByName(tech)
 ---
 
 <div class='text-background'>

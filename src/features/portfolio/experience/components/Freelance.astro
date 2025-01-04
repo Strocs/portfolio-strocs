@@ -9,7 +9,7 @@ import { getI18N } from '@/i18n'
 
 const { currentLocale: lang } = Astro
 const { PORTFOLIO } = await getI18N({ lang })
-const JOBS = await getProjects({ type: 'freelance', lang })
+const JOBS = await getProjects({ type: 'freelance' })
 
 const { WORKS_DONE, FREELANCE } = PORTFOLIO?.EXPERIENCE
 
@@ -35,7 +35,7 @@ const { WORKS_DONE, FREELANCE } = PORTFOLIO?.EXPERIENCE
     <!-- TODO: Componetize this section -->
     <div class='mb-[15rem]'>
       <div
-        class='absolute left-0 w-screen [mask-image:linear-gradient(to_left,rgb(0_0_0/100%)60%,transparent)]'>
+        class='absolute left-0 w-screen py-1 [mask-image:linear-gradient(to_left,rgb(0_0_0/100%)60%,transparent)]'>
         <!-- TODO: Generate global css variable for margin left value -->
         <div class='translate-x-[662px]'>
           <List list={JOBS} class='jobs-list' Item={JobsCard} />

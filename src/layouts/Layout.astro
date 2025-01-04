@@ -1,7 +1,5 @@
 ---
 import Background from '@/components/Background.astro'
-import azeretWoff2 from '@fontsource-variable/azeret-mono/files/azeret-mono-latin-wght-normal.woff2?url'
-
 import '@fontsource-variable/azeret-mono'
 
 interface Props {
@@ -19,25 +17,23 @@ const { title, description } = Astro.props
     <meta charset='UTF-8' />
     <meta name='description' content={description} />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <link
-      rel='preload'
-      as='font'
-      type='font/woff2'
-      href={azeretWoff2}
-      crossorigin='anonymous'
-    />
     <title>{title}</title>
   </head>
-  <body class='relative w-screen overflow-x-hidden'>
+  <body class='relative'>
     <Background />
     <slot />
   </body>
 </html>
 <style is:global>
   :root {
-    --background: 240 6% 10%;
+    --background: 217 28% 5%;
+    /* --background: 240 6% 10%; */
     --foreground: 240 5% 96%;
     --max-with: 660px;
     --indent: 2rem;
   }
+
+  /* html { */
+  /*   overflow-x: hidden; */
+  /* } */
 </style>
