@@ -34,46 +34,31 @@ const cssDuration = `${duration}s`
 const cssDelay = `${delay}s`
 ---
 
-<div aria-hidden='true' class:list={[wrapperClass, 'group relative']}>
+<div aria-hidden='true' class:list={[wrapperClass, 'group overflow-hidden']}>
   <ul
-    style={`gap: ${gap}`}
+    style={`gap: ${gap};`}
     class:list={[
       listClass,
-      'card-slides flex items-center py-4',
+      'card-slides flex w-max items-center py-4',
       mode === 'vertical' && 'flex-col',
       pauseOnHover && 'group-hover:[animation-play-state:paused]',
     ]}>
     {
-      list.map((item) => (
-        <li class:list={[itemClass, 'shrink-0']}>
-          <Item {...item} />
-        </li>
-      ))
-    }
-    {
-      list.map((item) => (
-        <li class:list={[itemClass, 'shrink-0']}>
-          <Item {...item} />
-        </li>
-      ))
-    }
-    {
-      list.map((item) => (
-        <li class:list={[itemClass, 'shrink-0']}>
-          <Item {...item} />
-        </li>
-      ))
+      [...Array(3)].map(() =>
+        list.map((item) => (
+          <li class:list={[itemClass, 'shrink-0']}>
+            <Item {...item} />
+          </li>
+        ))
+      )
     }
   </ul>
 </div>
 
 <style define:vars={{ cssDelay, cssDuration, direction, itemsQuantity, gap }}>
   @keyframes autoSlide {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
     to {
-      transform: translate3d(-1152px, 0, 0);
+      transform: translate3d(calc(-100% / 3), 0, 0);
     }
   }
 
