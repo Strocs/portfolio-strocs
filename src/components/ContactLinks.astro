@@ -1,0 +1,64 @@
+---
+import Button, { type ButtonVariants } from '@/components/ui/Button.astro'
+import Mail from '@/assets/icons/mail.svg'
+import PhoneIcon from '@/assets/icons/phoneIcon.svg'
+import { getI18N } from '@/i18n'
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js'
+
+export interface Contact {
+  type: ButtonVariants
+  label: string
+  Icon?: AstroComponentFactory
+  link: string
+}
+
+const { currentLocale: lang } = Astro
+const { RESUME } = await getI18N({ lang })
+
+const contactInfo: Contact[] = [
+  {
+    type: 'default',
+    label: 'LinkedIn',
+    link: '/',
+  },
+  {
+    type: 'default',
+    label: 'GitHub',
+    link: '/',
+  },
+  {
+    type: 'default',
+    label: RESUME,
+    link: '/',
+  },
+  {
+    type: 'square',
+    label: 'Email',
+    Icon: Mail,
+    link: '/',
+  },
+  {
+    type: 'square',
+    label: 'Phone',
+    Icon: PhoneIcon,
+    link: '/',
+  },
+]
+---
+
+<ul class='mt-10 flex gap-4'>
+  {
+    contactInfo.map(({ label, type, link, Icon }) => (
+      <li class='shrink-0'>
+        <Button aria-label={label} variant={type} href={link} as='a'>
+          {Icon && (
+            <span class='flex size-full items-center justify-center'>
+              <Icon stroke-width='1.5' />
+            </span>
+          )}
+          {!Icon && label}
+        </Button>
+      </li>
+    ))
+  }
+</ul>
