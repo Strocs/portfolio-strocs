@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+:root {
+  --background: 217 28% 5%;
+  /* --background: 240 6% 10%; */
+  --foreground: 240 5% 96%;
+  --max-with: 660px;
+  --indent: 2rem;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --font-azeret: 'Azeret Mono Variable', sans-serif;
+  --max-w-max: var(--max-with);
+  --m-ident: var(--indent);
+}
