@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Indicator from '@/components/ui/Indicator.astro'
+import Paragraph from '@/components/ui/Paragraph.astro'
+import Title from '@/components/ui/Title.astro'
+import List from '@/components/ui/List.astro'
+import JobsProjectsCard from './JobsProjectsCard.astro'
+import { getI18N } from '@/features/i18n/'
+import { getExperienceProjects } from '../utils'
+
+const { currentLocale: lang } = Astro
+const { PORTFOLIO } = await getI18N({ lang })
+
+type Props = CollectionEntry<'experience'>
+
+const { data } = Astro.props
+const { company, description, dateRange, hasProjects, experienceSlug } = data
+
+const experienceProjects = await getExperienceProjects({
+  lang,
+  experienceSlug,
+})
+---
+
+<article class='grid max-w-max gap-4'>
+  <header class='flex max-w-max justify-between'>
+    <div aria-hidden='true' class='flex items-center'>
+      <Indicator />
+      <Title variant='lg' as='h2' content={company} />
+    </div>
+    <p class='text-foreground text-lg'>
+      {dateRange}
+    </p>
+  </header>
+  <Paragraph content={description} />
+  <section class='ml-indent grid gap-4'>
+    <header class='flex items-center'>
+      <Indicator />
+      <Title content={PORTFOLIO.EXPERIENCE.WORKS_DONE} as='h2' />
+    </header>
+    {
+      hasProjects && (
+        <div class='mb-[15rem]'>
+          <div class='absolute left-0 w-screen [mask-image:linear-gradient(to_left,rgb(0_0_0/100%)60%,transparent)] py-1'>
+            <div class='translate-x-[662px]'>
+              <List
+                list={experienceProjects}
+                class='jobs-list'
+                Item={JobsProjectsCard}
+              />
+            </div>
+          </div>
+        </div>
+      )
+    }
+  </section>
+</article>
+
+<script>
+  import { createHorizontalScroll } from '@/utils/animations/createHorizontalScroll'
+
+  createHorizontalScroll({
+    container: '.jobs-list',
+  })
+</script>
