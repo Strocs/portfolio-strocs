@@ -1,7 +1,20 @@
 ---
-import Freelance from './components/Freelance.astro'
+import { getCollection } from 'astro:content'
+import Job from './components/Job.astro'
+
+// Get experience collection
+const experienceCollection = await getCollection(
+  'experience',
+  ({ data }) => data.lang === Astro.currentLocale
+)
 ---
 
 <section>
-  <Freelance />
+  {
+    experienceCollection.length > 0 ? (
+      experienceCollection.map((job) => <Job {...job} />)
+    ) : (
+      <p class='text-foreground text-center'>No experience found.</p>
+    )
+  }
 </section>

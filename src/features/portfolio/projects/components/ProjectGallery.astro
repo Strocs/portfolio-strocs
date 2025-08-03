@@ -1,7 +1,8 @@
 ---
-interface Props {
-  images?: Array<Record<'src' | 'alt', string>>
-}
+import type { PersonalProjectsSchema } from '@/features/content/schemas'
+import type { z } from 'astro:content'
+
+type Props = Pick<z.infer<typeof PersonalProjectsSchema>, 'images'>
 
 const { images = [] } = Astro.props
 ---

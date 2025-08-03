@@ -6,7 +6,7 @@ import Experience from '@/features/portfolio/experience/Experience.astro'
 import Projects from '@/features/portfolio/projects/Projects.astro'
 import About from '@/features/portfolio/about/About.astro'
 import Stack from '@/features/portfolio/stack/Stack.astro'
-import { getI18N } from '@/i18n/index'
+import { getI18N } from '@/features/i18n/'
 
 const { currentLocale: lang } = Astro
 const { SEO_TITLE, SEO_DESCRIPTION } = await getI18N({ lang })
@@ -16,7 +16,7 @@ const { SEO_TITLE, SEO_DESCRIPTION } = await getI18N({ lang })
   <a
     href='/blog'
     id='go-to-blog'
-    class='fixed bottom-0 right-0 top-0 z-50 m-auto h-[98vh] w-16 translate-x-10 transform-gpu rounded-l-3xl bg-background py-16 opacity-50 shadow-[0_0_0] shadow-foreground ring-1 ring-foreground/20 transition duration-200 hover:translate-x-0 hover:opacity-100'>
+    class='bg-background shadow-foreground ring-foreground/20 fixed top-0 right-0 bottom-0 z-50 m-auto h-[98vh] w-16 translate-x-10 transform-gpu rounded-l-3xl py-16 opacity-50 shadow-[0_0_0] ring-1 transition duration-200 hover:translate-x-0 hover:opacity-100'>
   </a>
   <Stack />
   <div aria-hidden='true' class='grid w-full grid-cols-[628px_auto]'>

@@ -1,5 +1,4 @@
 ---
-import type { CollectionEntry } from 'astro:content'
 import Github from '@/assets/icons/github.svg'
 import Button from '@/components/ui/Button.astro'
 import Indicator from '@/components/ui/Indicator.astro'
@@ -9,15 +8,15 @@ import Title from '@/components/ui/Title.astro'
 import TitleLink from '@/components/ui/TitleLink.astro'
 import ProjectGallery from './ProjectGallery.astro'
 import ProjectTechList from './ProjectTechList.astro'
-import { getI18N } from '@/i18n'
+import { getI18N } from '@/features/i18n/'
+import type { PersonalProjectsCollection } from '../types'
 
-type Props = CollectionEntry<'projects'>
+type Props = PersonalProjectsCollection
 
 const { currentLocale: lang } = Astro
 const { SEE_MORE_BTN } = await getI18N({ lang })
 
-const { data, id } = Astro.props
-const { title, extract, github, liveDemo, active, images, stack } = data
+const { data: project, id } = Astro.props
 ---
 
 <article class='max-w-max space-y-4'>
@@ -25,25 +24,28 @@ const { title, extract, github, liveDemo, active, images, stack } = data
     <Indicator />
     <div class='flex size-fit items-center gap-4'>
       <div class='flex items-center gap-2'>
-        <Status {active} />
-        <TitleLink href={liveDemo}>
-          <Title as='h3' variant='lg' content={title} />
+        <Status active={project.status === 'completed'} />
+        <TitleLink href={project.url.live}>
+          <Title as='h3' variant='lg' content={project.title} />
         </TitleLink>
       </div>
       {
-        github && (
-          <a href={github} aria-label='Repository Link' class='hover:scale-105'>
-            <Github class='size-5 text-foreground' />
+        project.url.github && (
+          <a
+            href={project.url.github}
+            aria-label='Repository Link'
+            class='hover:scale-105'>
+            <Github class='text-foreground size-5' />
           </a>
         )
       }
     </div>
   </header>
   <div aria-hidden='true' class='space-y-6'>
-    <Paragraph content={extract} class='' />
-    <ProjectTechList {stack} />
+    <Paragraph content={project.extract} class='' />
+    <ProjectTechList stack={project.stack} />
     <div class='ml-indent space-y-6'>
-      {images && <ProjectGallery {images} />}
+      {project.images && <ProjectGallery images={project.images} />}
       {
         id && (
           <Button as='a' href={'/blog/' + id}>
