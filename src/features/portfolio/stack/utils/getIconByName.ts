@@ -18,13 +18,10 @@ const namedLogos = Object.values(logos).map((logo) => {
     name,
   }
 })
+
 const getIconByName = (name: string) => {
-  return namedLogos.find(
-    (logo) =>
-      logo.name.toLowerCase() === name.toLowerCase() ||
-      logo.name.includes(name) ||
-      logo.name.toLowerCase() === 'javascript'
-  )?.default
+  const normalizedName = name.toLowerCase().replace(/[ .]/g, '')
+  return namedLogos.find((logo) => logo.name === normalizedName)?.default
 }
 
 export { getIconByName, namedLogos, logos }

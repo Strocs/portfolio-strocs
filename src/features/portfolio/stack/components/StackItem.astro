@@ -1,13 +1,16 @@
 ---
 import { getIconByName } from '../utils/getIconByName'
+import JS from '../assets/javascript.svg'
 
 interface Props {
   tech: string
 }
 
 const { tech = '' } = Astro.props
+// console.log(JS)
 
-const Icon = getIconByName(tech)
+const Icon: astroHTML.JSX.SVGAttributes = getIconByName(tech)
+if (!Icon) return null
 ---
 
 <div class='text-background'>
