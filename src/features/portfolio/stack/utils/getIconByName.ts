@@ -7,12 +7,9 @@ interface AstroSVGComponent {
   }
 }
 
-const logos = import.meta.glob<AstroSVGComponent>(
-  '../../../../assets/icons/stack/*.svg',
-  {
-    eager: true,
-  }
-)
+const logos = import.meta.glob<AstroSVGComponent>('../assets/*.svg', {
+  eager: true,
+})
 
 const namedLogos = Object.values(logos).map((logo) => {
   const name = logo.default.src.match(/(?!=\/)([a-zA-Z0-9]*)(?=\.svg)/g)![0]
