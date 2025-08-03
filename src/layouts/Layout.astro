@@ -1,6 +1,7 @@
 ---
 import Background from '@/components/Background.astro'
 import '@fontsource-variable/azeret-mono'
+import '@/styles/global.css'
 
 interface Props {
   title: string
@@ -24,16 +25,3 @@ const { title, description } = Astro.props
     <slot />
   </body>
 </html>
-<style is:global>
-  :root {
-    --background: 217 28% 5%;
-    /* --background: 240 6% 10%; */
-    --foreground: 240 5% 96%;
-    --max-with: 660px;
-    --indent: 2rem;
-  }
-
-  html {
-    overflow-x: hidden;
-  }
-</style>
