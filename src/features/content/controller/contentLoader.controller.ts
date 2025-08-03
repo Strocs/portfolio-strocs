@@ -1,7 +1,6 @@
 import { glob } from 'astro/loaders'
 
 const localLoader = (content: string) => {
-  console.log('Called from localLoader')
   return glob({ pattern: '*.md', base: '/content/' + content })
 }
 

@@ -23,13 +23,13 @@ const experienceProjects = await getExperienceProjects({
 ---
 
 <article class='grid max-w-max gap-4'>
-  <header class='flex max-w-max justify-between'>
+  <header class='flex min-w-max justify-between'>
     <div aria-hidden='true' class='flex items-center'>
       <Indicator />
       <Title variant='lg' as='h2' content={company} />
     </div>
     <p class='text-foreground text-lg'>
-      {dateRange}
+      {dateRange[0]} - {dateRange[1]}
     </p>
   </header>
   <Paragraph content={description} />

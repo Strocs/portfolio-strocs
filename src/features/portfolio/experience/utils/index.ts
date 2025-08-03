@@ -12,7 +12,6 @@ export const getExperienceProjects = async ({
 }: ExperienceProjectProps): Promise<ExperienceProjectsCollection[]> => {
   try {
     const projects = await getCollection('projects', ({ data }) => {
-      console.log(lang, experienceSlug, data)
       return (
         data.type === 'experience' &&
         data.lang === lang &&
