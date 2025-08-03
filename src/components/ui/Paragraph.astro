@@ -24,7 +24,7 @@ const variants: Record<Variants, string> = {
   typeof content === 'string' ? (
     <p
       class:list={[
-        'max-w-[660px] text-foreground',
+        'text-foreground max-w-[660px]',
         variants[variant],
         customClass,
       ]}
@@ -35,7 +35,7 @@ const variants: Record<Variants, string> = {
     content.map((item) => (
       <p
         class:list={[
-          'my-2 max-w-[660px] text-foreground',
+          'text-foreground my-2 max-w-[660px]',
           variants[variant],
           customClass,
         ]}
