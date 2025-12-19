@@ -8,26 +8,40 @@
   "NAV": {
     "EXPERIENCE": "Experience",
     "PROJECTS": "Projects",
-    "ABOUT": "About me"
+    "ABOUT": "About me",
+    "SKIP_TO_CONTENT": "Skip to main content",
+    "BLOG": "Go to blog"
   },
   "PORTFOLIO": {
     "HERO": {
       "TITLE": "Hi! <br> I'm <strong>Ignacio Molina</strong>",
-      "SUBTITLE": "Desarrollador Full Stack enfocado en el Frontend",
-      "DESCRIPTION": "+2 años de experiencia creando sitios web personalizados como freelance. Mi formación como Arquitecto me entregó la capacidad de analizar proyectos desde una perspectiva estructural, asegurando gran atención al detalle y conciencia del proceso.",
-      "IMAGE_ALT": "Ignacio Molina mirando alegremente de frente rodeado de la naturaleza"
+      "SUBTITLE": "Full Stack Developer focused on Frontend",
+      "DESCRIPTION": "+2 years of experience creating custom websites as a freelancer. My background as an Architect gave me the ability to analyze projects from a structural perspective, ensuring great attention to detail and process awareness.",
+      "IMAGE_ALT": "Ignacio Molina looking happily forward surrounded by nature"
     },
     "EXPERIENCE": {
-      "WORKS_DONE": "Trabajos realizados"
+      "TITLE": "Experience",
+      "WORKS_DONE": "Works done"
     },
-    "PROJECTS": {},
+    "PROJECTS": {
+      "TITLE": "Projects"
+    },
     "ABOUT": {
       "TITLE": "From physical spaces to digital solutions",
       "DESCRIPTION": [
-        "Hace dos años nació mi interés por la programación y el desarrollo de software. En ese momento, mientras cursaba la fase de titulación en Arquitectura, me di cuenta que mi verdadera pasión era ser desarrollador.",
-        "Comencé mi aprendizaje de forma autodidacta, estudiando HTML y CSS con profesores como Midudev y aprovechando los Platzi Day. Luego, adquirí cursos de JavaScript Moderno, React, Next.js y Node.js del profesor Fernando Herrera. Paralelamente, investigaba temas como estrategias de renderizado, bases de datos, arquitectura de software, buenas prácticas y más.",
-        "Actualmente, trabajo como desarrollador freelance utilizando Astro y centrándome en el rendimiento de mis proyectos. Como objetivo a futuro, espero seguir mejorando y aprendiendo cada día más."
+        "Two years ago, my interest in programming and software development was born. At that moment, while I was in the degree phase of Architecture, I realized that my true passion was to be a developer.",
+        "I began my learning self-taught, studying HTML and CSS with teachers like Midudev and taking advantage of Platzi Days. Then, I acquired courses in Modern JavaScript, React, Next.js and Node.js from teacher Fernando Herrera. At the same time, I researched topics such as rendering strategies, databases, software architecture, best practices and more.",
+        "Currently, I work as a freelance developer using Astro and focusing on the performance of my projects. As a future goal, I hope to continue improving and learning more every day."
       ]
+    },
+    "STACK": {
+      "TITLE": "Tech Stack"
     }
+  },
+  "A11Y": {
+    "SCROLL_LEFT": "Scroll left",
+    "SCROLL_RIGHT": "Scroll right",
+    "EXTERNAL_LINK": "Opens in new tab",
+    "REPOSITORY_LINK": "View repository on GitHub"
   }
 }

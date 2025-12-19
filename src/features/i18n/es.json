@@ -8,7 +8,9 @@
   "NAV": {
     "EXPERIENCE": "Experiencia",
     "PROJECTS": "Proyectos",
-    "ABOUT": "Sobre mí"
+    "ABOUT": "Sobre mí",
+    "SKIP_TO_CONTENT": "Saltar al contenido principal",
+    "BLOG": "Ir al blog"
   },
   "PORTFOLIO": {
     "HERO": {
@@ -18,9 +20,12 @@
       "IMAGE_ALT": "Ignacio Molina mirando alegremente de frente rodeado de la naturaleza"
     },
     "EXPERIENCE": {
+      "TITLE": "Experiencia",
       "WORKS_DONE": "Trabajos realizados"
     },
-    "PROJECTS": {},
+    "PROJECTS": {
+      "TITLE": "Proyectos"
+    },
     "ABOUT": {
       "TITLE": "De espacios físicos a soluciones digitales",
       "DESCRIPTION": [
@@ -28,6 +33,15 @@
         "Comencé mi formación de manera autodidacta, mostrando disciplina y enfoque al aprovechar plataformas como Platzi, FreeCodeCamp y YouTube, y aprendiendo de expertos como Midudev y Fernando Herrera. Gracias a este esfuerzo, <strong>dominé tecnologías clave como HTML, CSS, JavaScript, React, Next.js y Node.js</strong>, habilidades que aplico constantemente en proyectos reales. Hoy, estoy reforzando mi preparación con <strong>certificaciones oficiales como el Associate Cloud Engineer de Google</strong>, demostrando mi compromiso con una preparación <strong>profesional sólida</strong> y mi objetivo de ser un <strong>desarrollador altamente capacitado</strong>.",
         "Creo firmemente que el desarrollo de software no es solo escribir código; <strong>es diseñar soluciones que transformen ideas en realidades, generen confianza y aporten valor a las personas</strong>. Mi meta es seguir creciendo, aprendiendo y enfrentando cada proyecto con <strong>profesionalismo y dedicación</strong>."
       ]
+    },
+    "STACK": {
+      "TITLE": "Stack Tecnológico"
     }
+  },
+  "A11Y": {
+    "SCROLL_LEFT": "Desplazar a la izquierda",
+    "SCROLL_RIGHT": "Desplazar a la derecha",
+    "EXTERNAL_LINK": "Se abre en una nueva pestaña",
+    "REPOSITORY_LINK": "Ver repositorio en GitHub"
   }
 }
