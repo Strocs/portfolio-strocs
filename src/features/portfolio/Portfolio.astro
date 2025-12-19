@@ -6,29 +6,41 @@ import Experience from '@/features/portfolio/experience/Experience.astro'
 import Projects from '@/features/portfolio/projects/Projects.astro'
 import About from '@/features/portfolio/about/About.astro'
 import Stack from '@/features/portfolio/stack/Stack.astro'
+import Footer from '@/components/Footer.astro'
 import { getI18N } from '@/features/i18n/'
 
 const { currentLocale: lang } = Astro
-const { SEO_TITLE, SEO_DESCRIPTION } = await getI18N({ lang })
+const { SEO_TITLE, SEO_DESCRIPTION, NAV } = await getI18N({ lang })
 ---
 
 <Layout title={SEO_TITLE} description={SEO_DESCRIPTION}>
+  <!-- Blog navigation link -->
   <a
     href='/blog'
-    id='go-to-blog'
-    class='bg-background shadow-foreground ring-foreground/20 fixed top-0 right-0 bottom-0 z-50 m-auto h-[98vh] w-16 translate-x-10 transform-gpu rounded-l-3xl py-16 opacity-50 shadow-[0_0_0] ring-1 transition duration-200 hover:translate-x-0 hover:opacity-100'>
+    aria-label={NAV.BLOG}
+    class='fixed top-0 right-0 bottom-0 z-50 m-auto h-[98vh] w-16 translate-x-10 transform-gpu rounded-l-3xl bg-background py-16 opacity-50 shadow-[0_0_0] ring-1 shadow-foreground ring-foreground/20 transition duration-200 hover:translate-x-0 hover:opacity-100 focus:translate-x-0 focus:opacity-100'>
+    <span class='sr-only'>{NAV.BLOG}</span>
   </a>
+
+  <!-- Decorative tech stack background -->
   <Stack />
-  <div aria-hidden='true' class='grid w-full grid-cols-[628px_auto]'>
+
+  <div class='grid w-full grid-cols-[628px_auto]'>
     <aside class='block w-full'>
       <Nav />
     </aside>
-    <main class='grid w-full gap-52'>
+    <main id='main-content' class='grid w-full gap-52'>
       <Hero />
-      <Experience />
-      <Projects />
-      <About />
+      <section id='experience' aria-labelledby='experience-heading'>
+        <Experience />
+      </section>
+      <section id='projects' aria-labelledby='projects-heading'>
+        <Projects />
+      </section>
+      <section id='about' aria-labelledby='about-heading'>
+        <About />
+      </section>
     </main>
   </div>
-  <footer class='h-96'></footer>
+  <Footer />
 </Layout>
