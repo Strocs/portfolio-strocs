@@ -11,10 +11,12 @@ const { currentLocale: lang } = Astro
 const { PORTFOLIO, OTW } = await getI18N({ lang })
 ---
 
-<div aria-hidden='true' class='-mt-10 -mb-52 grid min-h-screen items-center'>
+<section
+  aria-label='Introduction'
+  class='-mt-10 -mb-52 grid min-h-screen items-center'>
   <header class='max-w-max'>
     <PersonalImage />
-    <div aria-hidden='true' class='relative mb-6'>
+    <div class='relative mb-6'>
       <Title as='h1' content={PORTFOLIO.HERO.TITLE} variant='xl' class='mb-2' />
       <Title as='h2' content={PORTFOLIO.HERO.SUBTITLE} />
       {
@@ -30,4 +32,4 @@ const { PORTFOLIO, OTW } = await getI18N({ lang })
     <Paragraph variant='xl' content={PORTFOLIO.HERO.DESCRIPTION} />
     <ContactLinks />
   </header>
-</div>
+</section>
