@@ -1,0 +1,70 @@
+---
+import { getI18N } from '@/features/i18n/'
+
+const { currentLocale: lang } = Astro
+const { NAV, PORTFOLIO } = await getI18N({ lang })
+
+const currentYear = new Date().getFullYear()
+
+const navigation = [
+  { label: PORTFOLIO.EXPERIENCE.TITLE, href: '#experience' },
+  { label: PORTFOLIO.PROJECTS.TITLE, href: '#projects' },
+  { label: PORTFOLIO.ABOUT.TITLE, href: '#about' },
+  { label: NAV.BLOG, href: '/blog' },
+]
+
+const social = [
+  { label: 'GitHub', href: 'https://github.com/strocs' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/strocs' },
+  { label: 'Email', href: 'mailto:hello@strocs.dev' },
+]
+---
+
+<footer class='mt-32 border-t border-foreground/10 py-8'>
+  <div class='mx-auto flex items-center justify-between px-16'>
+    <!-- Left: Name and year -->
+    <p class='font-azeret text-sm text-foreground/60'>
+      Ignacio Molina {currentYear}
+    </p>
+
+    <!-- Center: Navigation -->
+    <nav aria-label='Footer navigation' class='flex items-center gap-6'>
+      {
+        navigation.map((item, index) => (
+          <>
+            {index > 0 && (
+              <span
+                aria-hidden='true'
+                class='block h-3 w-2 bg-foreground/20 [clip-path:polygon(0_0,0_100%,100%_50%)]'
+              />
+            )}
+            <a
+              href={item.href}
+              class='font-azeret text-sm text-foreground/60 transition-colors duration-150 hover:text-foreground focus:text-foreground focus:outline-none'>
+              {item.label}
+            </a>
+          </>
+        ))
+      }
+    </nav>
+
+    <!-- Right: Social links -->
+    <ul class='flex items-center gap-4'>
+      {
+        social.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={
+                item.href.startsWith('http') ? 'noopener noreferrer' : undefined
+              }
+              class='font-azeret text-sm text-foreground/60 transition-colors duration-150 hover:text-foreground focus:text-foreground focus:outline-none'>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>
