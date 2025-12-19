@@ -10,13 +10,18 @@ const { PORTFOLIO } = await getI18N({ lang })
 const { ABOUT } = PORTFOLIO
 ---
 
-<section class='flex gap-4'>
+<div class='flex gap-4'>
   <article class='shrink-0'>
     <header class='flex items-center'>
       <Indicator />
-      <Title variant='lg' as='h2' content={ABOUT?.TITLE ?? ''} />
+      <Title
+        id='about-heading'
+        variant='lg'
+        as='h2'
+        content={ABOUT?.TITLE ?? ''}
+      />
     </header>
     <Paragraph content={ABOUT?.DESCRIPTION ?? ''} />
     <ContactLinks />
   </article>
-</section>
+</div>
