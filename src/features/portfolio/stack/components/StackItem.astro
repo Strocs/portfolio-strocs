@@ -1,20 +1,37 @@
 ---
-import { getIconByName } from '../utils/getIconByName'
-import JS from '../assets/javascript.svg'
-
 interface Props {
   tech: string
+  Icon?: string
 }
 
-const { tech = '' } = Astro.props
-// console.log(JS)
+const { tech, Icon } = Astro.props
 
-const Icon: astroHTML.JSX.SVGAttributes = getIconByName(tech)
 if (!Icon) return null
 ---
 
-<div class='text-background'>
-  <Icon
-    class='size-12 opacity-25 grayscale transition-[opacity,filter] duration-150 hover:opacity-100 hover:grayscale-0'
-  />
+<div class='group/item relative text-background'>
+  <span
+    class='pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 rounded bg-background/40 px-4 py-1 font-azeret text-sm leading-none font-light whitespace-nowrap text-foreground opacity-0 outline outline-foreground/20 transition-opacity duration-100 outline-dashed group-hover/item:opacity-100'>
+    {tech}
+  </span>
+  <div class='stack-icon'>
+    <Fragment set:html={Icon} />
+  </div>
 </div>
+
+<style>
+  .stack-icon :global(svg) {
+    width: 3rem;
+    height: 3rem;
+    opacity: 0.25;
+    filter: grayscale(1);
+    transition:
+      opacity 150ms,
+      filter 150ms;
+  }
+
+  .group\/item:hover .stack-icon :global(svg) {
+    opacity: 1;
+    filter: grayscale(0);
+  }
+</style>

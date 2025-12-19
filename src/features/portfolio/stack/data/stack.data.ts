@@ -1,25 +1,42 @@
-import icons from './icons'
+import icons, { type IconName } from './icons'
 
-export const stack = [
-  { tech: 'HTML', Icon: icons.html },
-  { tech: 'CSS', Icon: icons.css },
-  { tech: 'Javascript', Icon: icons.javascript },
-  { tech: 'Typescript', Icon: icons.typescript },
-  { tech: 'Astro', Icon: icons.astro },
-  { tech: 'React', Icon: icons.react },
-  { tech: 'Node.js', Icon: icons.nodejs },
-  { tech: 'Next.js', Icon: icons.nextjs },
-  { tech: 'TailwindCSS', Icon: icons.tailwindcss },
-  // { tech: 'MongoDB', Icon: icons.mongodb },
-  { tech: 'Firebase', Icon: icons.firebase },
-  // { tech: 'Turso', Icon: icons.turso },
-  // { tech: 'SQLite', Icon: icons.sqlite },
-  {
-    tech: 'Google Cloud Platform',
-    // Icon: icons.googlecloudplatform,
-  },
-  { tech: 'Vercel', Icon: icons.vercel },
-  // { tech: 'Java', Icon: icons.java },
-  // { tech: 'Python', Icon: icons.python },
-  // { tech: 'Lua', Icon: icons.lua },
+export interface StackItem {
+  tech: string
+  Icon?: string
+}
+
+const createStackItem = (tech: string, iconKey?: IconName): StackItem => ({
+  tech,
+  Icon: iconKey ? icons[iconKey] : undefined,
+})
+
+export const stack: StackItem[] = [
+  // Frontend - Core
+  createStackItem('HTML', 'html'),
+  createStackItem('CSS', 'css'),
+  createStackItem('TailwindCSS', 'tailwindcss'),
+  // Frontend - Languages
+  createStackItem('Javascript', 'javascript'),
+  createStackItem('Typescript', 'typescript'),
+  // Frontend - Frameworks
+  createStackItem('React', 'react'),
+  createStackItem('Next.js', 'nextjs'),
+  createStackItem('Astro', 'astro'),
+  // Frontend - Animation
+  createStackItem('GSAP', 'gsap'),
+  // Frontend - Testing
+  createStackItem('Vitest', 'vitest'),
+  createStackItem('Playwright', 'playwright'),
+  // Backend & Scripting
+  createStackItem('Node.js', 'nodejs'),
+  createStackItem('Go', 'go'),
+  createStackItem('Python', 'python'),
+  // Others - Databases
+  createStackItem('Prisma', 'prisma'),
+  createStackItem('Turso', 'turso'),
+  createStackItem('Firebase', 'firebase'),
+  // Others - Deployment & DevOps
+  createStackItem('Git', 'git'),
+  createStackItem('GitHub', 'github'),
+  createStackItem('Vercel', 'vercel'),
 ]
