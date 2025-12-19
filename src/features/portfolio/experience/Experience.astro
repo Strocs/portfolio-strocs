@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content'
 import Job from './components/Job.astro'
+import Title from '@/components/ui/Title.astro'
+import { getI18N } from '@/features/i18n/'
+
+const { currentLocale: lang } = Astro
+const { PORTFOLIO } = await getI18N({ lang })
 
 // Get experience collection
 const experienceCollection = await getCollection(
@@ -9,12 +14,24 @@ const experienceCollection = await getCollection(
 )
 ---
 
-<section>
+<div class='space-y-8'>
+  <header class='flex items-center'>
+    <Title
+      id='experience-heading'
+      as='h2'
+      variant='xl'
+      content={PORTFOLIO.EXPERIENCE.TITLE}
+    />
+  </header>
   {
     experienceCollection.length > 0 ? (
-      experienceCollection.map((job) => <Job {...job} />)
+      <div class='space-y-16'>
+        {experienceCollection.map((job) => (
+          <Job {...job} />
+        ))}
+      </div>
     ) : (
-      <p class='text-foreground text-center'>No experience found.</p>
+      <p class='text-center text-foreground'>No experience found.</p>
     )
   }
-</section>
+</div>

@@ -11,13 +11,13 @@ import type { ExperienceProjectsCollection } from '../types'
 type Props = ExperienceProjectsCollection
 
 const { currentLocale: lang } = Astro
-const { SEE_MORE_BTN } = await getI18N({ lang })
+const { SEE_MORE_BTN, A11Y } = await getI18N({ lang })
 
 const { data: jobData, id } = Astro.props
 ---
 
 <article
-  class='text-foreground outline-foreground/20 hover:bg-background/20 grid h-60 w-full max-w-[420px] grid-rows-[fit-content(100%)_auto_fit-content(100%)] gap-2 rounded-lg px-6 pt-4 pb-6 outline-1 transition duration-150'>
+  class='grid h-60 w-full max-w-[420px] grid-rows-[fit-content(100%)_auto_fit-content(100%)] gap-2 rounded-lg px-6 pt-4 pb-6 text-foreground outline-1 outline-foreground/20 transition duration-150 focus-within:bg-background/20 hover:bg-background/20'>
   <header class='flex size-fit items-center gap-4'>
     <div class='flex items-center gap-2'>
       <Status active={jobData.active} />
@@ -25,12 +25,13 @@ const { data: jobData, id } = Astro.props
         jobData.active ? (
           <TitleLink
             target='_blank'
-            href={jobData.url.github}
+            rel='noopener noreferrer'
+            href={jobData.url.live}
             class='hover:underline'>
-            <Title as='h3' content={jobData.title} />
+            <Title as='h4' content={jobData.title} />
           </TitleLink>
         ) : (
-          <Title as='h3' content={jobData.title} />
+          <Title as='h4' content={jobData.title} />
         )
       }
     </div>
@@ -39,13 +40,14 @@ const { data: jobData, id } = Astro.props
         <a
           href={jobData.url.github}
           target='_blank'
-          aria-label='Repository Link'
-          class='hover:scale-105'>
-          <Github class='text-foreground size-5' />
+          rel='noopener noreferrer'
+          aria-label={`${A11Y.REPOSITORY_LINK}: ${jobData.title}`}
+          class='rounded hover:scale-105 focus:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground'>
+          <Github class='size-5 text-foreground' />
         </a>
       )
     }
   </header>
   <Paragraph content={jobData.extract} class='leading-tight' />
-  <Button as='a' href={'/blog/' + id} class=''>{SEE_MORE_BTN}</Button>
+  <Button as='a' href={'/blog/' + id}>{SEE_MORE_BTN}</Button>
 </article>

@@ -9,7 +9,7 @@ import { getI18N } from '@/features/i18n/'
 import { getExperienceProjects } from '../utils'
 
 const { currentLocale: lang } = Astro
-const { PORTFOLIO } = await getI18N({ lang })
+const { PORTFOLIO, A11Y } = await getI18N({ lang })
 
 type Props = CollectionEntry<'experience'>
 
@@ -20,34 +20,48 @@ const experienceProjects = await getExperienceProjects({
   lang,
   experienceSlug,
 })
+
+const scrollContainerId = `scroll-${experienceSlug}`
 ---
 
 <article class='grid max-w-max gap-4'>
   <header class='flex min-w-max justify-between'>
-    <div aria-hidden='true' class='flex items-center'>
+    <div class='flex items-center'>
       <Indicator />
-      <Title variant='lg' as='h2' content={company} />
+      <Title variant='lg' as='h3' content={company} />
     </div>
     <p class='text-foreground text-lg'>
-      {dateRange[0]} - {dateRange[1]}
+      <time>{dateRange[0]}</time> - <time>{dateRange[1]}</time>
     </p>
   </header>
   <Paragraph content={description} />
-  <section class='ml-indent grid gap-4'>
+  <section class='ml-indent grid gap-4' aria-label={PORTFOLIO.EXPERIENCE.WORKS_DONE}>
     <header class='flex items-center'>
       <Indicator />
-      <Title content={PORTFOLIO.EXPERIENCE.WORKS_DONE} as='h2' />
+      <Title content={PORTFOLIO.EXPERIENCE.WORKS_DONE} as='h4' />
     </header>
     {
-      hasProjects && (
+      hasProjects && experienceProjects.length > 0 && (
         <div class='mb-[15rem]'>
           <div class='absolute left-0 w-screen [mask-image:linear-gradient(to_left,rgb(0_0_0/100%)60%,transparent)] py-1'>
             <div class='translate-x-[662px]'>
-              <List
-                list={experienceProjects}
-                class='jobs-list'
-                Item={JobsProjectsCard}
-              />
+              <!-- Keyboard navigation controls -->
+              <div class='sr-only' id={`${scrollContainerId}-instructions`}>
+                {A11Y.SCROLL_LEFT} / {A11Y.SCROLL_RIGHT}
+              </div>
+              <div
+                role='region'
+                aria-label={PORTFOLIO.EXPERIENCE.WORKS_DONE}
+                aria-describedby={`${scrollContainerId}-instructions`}
+                tabindex='0'
+                class='focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg'
+                data-scroll-container={scrollContainerId}>
+                <List
+                  list={experienceProjects}
+                  class={`jobs-list ${scrollContainerId}`}
+                  Item={JobsProjectsCard}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -59,7 +73,35 @@ const experienceProjects = await getExperienceProjects({
 <script>
   import { createHorizontalScroll } from '@/utils/animations/createHorizontalScroll'
 
-  createHorizontalScroll({
-    container: '.jobs-list',
+  // Initialize horizontal scroll with keyboard support
+  document.querySelectorAll('[data-scroll-container]').forEach((container) => {
+    const containerId = container.getAttribute('data-scroll-container')
+    if (!containerId) return
+
+    // Initialize GSAP horizontal scroll
+    createHorizontalScroll({
+      container: `.${containerId}`,
+    })
+
+    // Add keyboard navigation
+    container.addEventListener('keydown', (e) => {
+      const event = e as KeyboardEvent
+      const list = container.querySelector(`.${containerId}`) as HTMLElement
+      if (!list) return
+
+      const scrollAmount = 200
+      const currentX = parseFloat(list.style.transform?.match(/-?\d+/)?.[0] || '0')
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault()
+        const newX = Math.min(currentX + scrollAmount, 0)
+        list.style.transform = `translateX(${newX}px)`
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault()
+        const maxScroll = -(list.scrollWidth - container.clientWidth)
+        const newX = Math.max(currentX - scrollAmount, maxScroll)
+        list.style.transform = `translateX(${newX}px)`
+      }
+    })
   })
 </script>
