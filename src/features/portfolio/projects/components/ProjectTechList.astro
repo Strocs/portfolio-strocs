@@ -2,12 +2,20 @@
 import Badge from '@/components/ui/Badge.astro'
 
 interface Props {
-  stack: Array<string>
+  stack?: string[]
 }
 
-const { stack } = Astro.props
+const { stack = [] } = Astro.props
 ---
 
-<ui class='flex flex-wrap gap-4'>
-  {stack.map((tech) => <Badge label={tech} />)}
-</ui>
+{
+  stack.length > 0 && (
+    <ul class='flex flex-wrap gap-4'>
+      {stack.map((tech) => (
+        <li>
+          <Badge label={tech} />
+        </li>
+      ))}
+    </ul>
+  )
+}

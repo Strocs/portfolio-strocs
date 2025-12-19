@@ -1,11 +1,25 @@
 ---
 import Project from './components/Project.astro'
+import Title from '@/components/ui/Title.astro'
 import { getPersonalProjects } from './utils'
+import { getI18N } from '@/features/i18n/'
+
 const { currentLocale: lang } = Astro
+const { PORTFOLIO } = await getI18N({ lang })
 
 const personalProjects = await getPersonalProjects({ lang })
 ---
 
-<section class='grid gap-24'>
-  {personalProjects.map((project) => <Project {...project} />)}
-</section>
+<div class='space-y-8'>
+  <header class='flex items-center'>
+    <Title
+      id='projects-heading'
+      as='h2'
+      variant='xl'
+      content={PORTFOLIO.PROJECTS.TITLE}
+    />
+  </header>
+  <div class='grid gap-24'>
+    {personalProjects.map((project) => <Project {...project} />)}
+  </div>
+</div>
