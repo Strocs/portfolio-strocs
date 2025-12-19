@@ -1,12 +1,14 @@
 ---
 import { Picture } from 'astro:assets'
 import personalImg from '@/assets/images/personal.jpg'
+import { getI18N } from '@/features/i18n/'
 
-const alt = ''
+const { currentLocale: lang } = Astro
+const { PORTFOLIO } = await getI18N({ lang })
 ---
 
 <Picture
-  {alt}
+  alt={PORTFOLIO.HERO.IMAGE_ALT}
   src={personalImg}
   width={112}
   height={112}
