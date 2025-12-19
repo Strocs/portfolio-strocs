@@ -1,11 +1,17 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
+
 type Variants = 'default' | 'lg'
 
-interface Props {
-  Icon?: (_Props: Record<string, any>) => any
+interface IconProps {
+  class?: string
+}
+
+interface Props extends HTMLAttributes<'span'> {
+  Icon?: (props: IconProps) => astroHTML.JSX.Element
   label: string
   variant?: Variants
-  class?: string | Array<string>
+  class?: string
 }
 
 const {
@@ -13,7 +19,7 @@ const {
   label,
   variant = 'default',
   class: customClass,
-} = Astro.props as Props
+} = Astro.props
 
 const variants: Record<Variants, string> = {
   lg: 'py-2 px-6',
@@ -23,7 +29,7 @@ const variants: Record<Variants, string> = {
 
 <span
   class:list={[
-    'flex size-min items-center gap-2 whitespace-nowrap rounded font-azeret text-sm font-light leading-none text-foreground outline outline-1 outline-foreground/20',
+    'flex size-min items-center gap-2 rounded font-azeret text-sm leading-none font-light whitespace-nowrap text-foreground outline outline-1 outline-foreground/20',
     variants[variant],
     customClass,
   ]}>
