@@ -30,22 +30,24 @@ const scrollContainerId = `scroll-${experienceSlug}`
       <Indicator />
       <Title variant='lg' as='h3' content={company} />
     </div>
-    <p class='text-foreground text-lg'>
+    <p class='text-lg text-foreground'>
       <time>{dateRange[0]}</time> - <time>{dateRange[1]}</time>
     </p>
   </header>
   <Paragraph content={description} />
-  <section class='ml-indent grid gap-4' aria-label={PORTFOLIO.EXPERIENCE.WORKS_DONE}>
+  <section
+    class='ml-indent grid gap-4'
+    aria-label={PORTFOLIO.EXPERIENCE.WORKS_DONE}>
     <header class='flex items-center'>
       <Indicator />
       <Title content={PORTFOLIO.EXPERIENCE.WORKS_DONE} as='h4' />
     </header>
     {
       hasProjects && experienceProjects.length > 0 && (
-        <div class='mb-[15rem]'>
-          <div class='absolute left-0 w-screen [mask-image:linear-gradient(to_left,rgb(0_0_0/100%)60%,transparent)] py-1'>
-            <div class='translate-x-[662px]'>
-              <!-- Keyboard navigation controls -->
+        <div class='mb-60'>
+          <div class='absolute left-0 w-screen mask-[linear-gradient(to_left,rgb(0_0_0/100%)60%,transparent)] py-1'>
+            <div class='translate-x-165.5'>
+              {/* Keyboard navigation controls */}
               <div class='sr-only' id={`${scrollContainerId}-instructions`}>
                 {A11Y.SCROLL_LEFT} / {A11Y.SCROLL_RIGHT}
               </div>
@@ -54,7 +56,7 @@ const scrollContainerId = `scroll-${experienceSlug}`
                 aria-label={PORTFOLIO.EXPERIENCE.WORKS_DONE}
                 aria-describedby={`${scrollContainerId}-instructions`}
                 tabindex='0'
-                class='focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg'
+                class='rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background'
                 data-scroll-container={scrollContainerId}>
                 <List
                   list={experienceProjects}
@@ -90,7 +92,9 @@ const scrollContainerId = `scroll-${experienceSlug}`
       if (!list) return
 
       const scrollAmount = 200
-      const currentX = parseFloat(list.style.transform?.match(/-?\d+/)?.[0] || '0')
+      const currentX = parseFloat(
+        list.style.transform?.match(/-?\d+/)?.[0] || '0'
+      )
 
       if (event.key === 'ArrowLeft') {
         event.preventDefault()

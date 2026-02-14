@@ -1,1 +1,47 @@
-<nav></nav>
+<nav class='h-full bg-red-200'>
+  <ul class=''>
+    <li class=''>
+      <a data-scroll-to='hero' href='#hero'>
+        <!-- SVG of a white triangle -->
+        <!-- When the page reach the section the svg will animate to the shape around the text. That shape is like a border of the space of the text -->
+        <!-- Will mantain the same characteristics as the current svg, that means if the svg is a triangle filled with white, the svg will change to the width of the text plus some gap  -->
+      </a>
+    </li>
+
+    <li>
+      <a data-scroll-to='experience' href='#experience'>
+        <!-- SVG of a transparent circle with white stroke -->
+      </a>
+    </li>
+
+    <li>
+      <a data-scroll-to='projects' href='#projects'>
+        <!-- SVG of a white filled circle -->
+      </a>
+    </li>
+
+    <li>
+      <a data-scroll-to='about' href='#about'>
+        <!-- SVG of a transparent triangle with white stroke -->
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  const navLinks = document.querySelectorAll('nav a[data-scroll-to]')
+
+  // Scroll to section on click
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      const sectionId = link.getAttribute('data-scroll-to')
+      const section = document.getElementById(sectionId)
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  })
+
+  // We need to use gsap to animate the transition of the svg to the share around the text
+  // We will use the scrollTrigger plugin to detect when the section is in view
+  // and then we will animate the svg to the shape around the text like a border
+</script>
